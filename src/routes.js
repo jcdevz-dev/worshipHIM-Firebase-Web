@@ -40,7 +40,7 @@ export default function Router() {
       path: '/dashboard',
       element: <DashboardLayout loading={loading} />,
       children: [
-        // { element: <Navigate to="/dashboard/app" />, index: true },
+        { element: <Navigate to="/dashboard/app" />, index: true },
         { path: 'app', element: <DashboardAppPage /> },
         { path: 'artists',element: <ArtistsPage />},
         { path: 'artists/:filter/:type', element: <SongsPage /> },

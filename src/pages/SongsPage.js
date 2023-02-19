@@ -87,6 +87,7 @@ export default function SongsPage() {
 
   const { filter, type } = useParams();
 
+
   const [allSongs, setallSongs] = useState([]);
 
   const [filteredSongs, setfilteredSongs] = useState([]);
@@ -426,7 +427,7 @@ export default function SongsPage() {
       <Container>
         <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
           <Typography variant="h4" gutterBottom>
-            {filter!=="" ? filter : "Songs / Hymns"}
+            {filter!== undefined ? filter : "Songs / Hymns"}
           </Typography>
           <Button variant="contained" startIcon={<Iconify icon="eva:plus-fill" />}  onClick={()=>handleDialog('New', <IfNew/>,"new")}>
             New Song / Hymn
@@ -434,7 +435,7 @@ export default function SongsPage() {
         </Stack>
 
         <Card>
-          <DynamicListToolbar numSelected={selected.length} filterName={filterName} onFilterName={handleFilterByName} pageName={filter!== "" ? filter : "songs / hymns"} />
+          <DynamicListToolbar numSelected={selected.length} filterName={filterName} onFilterName={handleFilterByName} pageName={filter!== undefined ? filter : "songs / hymns"} />
 
           <Scrollbar>
             <TableContainer sx={{ minWidth: 800 }}>
