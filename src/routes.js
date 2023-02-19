@@ -9,12 +9,8 @@ import SimpleLayout from './layouts/simple';
 //
 import ArtistsPage from './pages/ArtistsPage';
 import SongsPage from './pages/SongsPage';
-import BlogPage from './pages/BlogPage';
-import UserPage from './pages/UserPage';
 import LoginPage from './pages/LoginPage';
 import Page404 from './pages/Page404';
-import ProductsPage from './pages/ProductsPage';
-import DashboardAppPage from './pages/DashboardAppPage';
 
 // ----------------------------------------------------------------------
 
@@ -40,26 +36,22 @@ export default function Router() {
       path: '/dashboard',
       element: <DashboardLayout loading={loading} />,
       children: [
-        { element: <Navigate to="/dashboard/app" />, index: true },
-        { path: 'app', element: <DashboardAppPage /> },
+        { element: <Navigate to="/dashboard/artists" />, index: true },
         { path: 'artists',element: <ArtistsPage />},
         { path: 'artists/:type', element: <ArtistsPage /> },
         { path: 'artists/:filter/:type', element: <SongsPage /> },
         { path: 'songs', element: <SongsPage /> },
         { path: 'songs/:filter/:type', element: <SongsPage /> },
-        // { path: 'user', element: <UserPage /> },
-        // { path: 'products', element: <ProductsPage /> },
-        // { path: 'blog', element: <BlogPage /> },
       ],
     },
     {
       path: 'login',
-      element: userAuth.valid ? <Navigate to="/dashboard/app" replace /> : <LoginPage />,
+      element: userAuth.valid ? <Navigate to="/dashboard/artists" replace /> : <LoginPage />,
     },
     {
       element: <SimpleLayout />,
       children: [
-        { element: <Navigate to="/dashboard/app" />, index: true },
+        { element: <Navigate to="/dashboard/artists" />, index: true },
         { path: '404', element: <Page404 /> },
         { path: '*', element: <Navigate to="/404" /> },
       ],

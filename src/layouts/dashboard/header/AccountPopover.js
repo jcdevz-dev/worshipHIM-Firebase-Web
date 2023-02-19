@@ -5,21 +5,12 @@ import { alpha } from '@mui/material/styles';
 import { Box, Divider, Typography, Stack, MenuItem, Avatar, IconButton, Popover } from '@mui/material';
 // context
 import { UserContext } from '../../../context/auth';
-// mocks_
-import account from '../../../_mock/account';
+
 import { logOut } from '../../../firebase/firebase';
 
 // ----------------------------------------------------------------------
 
 const MENU_OPTIONS = [
-  {
-    label: 'Home',
-    icon: 'eva:home-fill',
-  },
-  {
-    label: 'Profile',
-    icon: 'eva:person-fill',
-  },
   {
     label: 'Settings',
     icon: 'eva:settings-2-fill',
@@ -63,7 +54,7 @@ export default function AccountPopover() {
           }),
         }}
       >
-        <Avatar src={account.photoURL} alt="photoURL" />
+        <Avatar src={`${process.env.PUBLIC_URL  }/assets/images/avatars/avatar_15.jpg`} alt="photoURL" />
       </IconButton>
 
       <Popover
