@@ -2,7 +2,7 @@ import { Helmet } from 'react-helmet-async';
 import { filter } from 'lodash';
 import { sentenceCase } from 'change-case';
 import { useEffect, useState  } from 'react';
-
+import { useParams, Link } from 'react-router-dom';
 // @mui
 import {
   Card,
@@ -26,7 +26,7 @@ import {
 } from '@mui/material';
 
 // firebase
-import { collection, doc, addDoc, getDocs, deleteDoc, setDoc } from "firebase/firestore";
+import { collection, doc, addDoc, getDocs, deleteDoc, setDoc, where, query } from "firebase/firestore";
 import { db } from '../firebase/firebase';
 
 // components
@@ -83,8 +83,9 @@ function applySortFilter(array, comparator, query) {
   return stabilizedThis.map((el) => el[0]);
 }
 
-export default function ArtistsPage() {
+export default function SongsPage() {
 
+  const { filter, type } = useParams();
 
   const [allSongs, setallSongs] = useState([]);
 
@@ -119,11 +120,31 @@ export default function ArtistsPage() {
   // const [onYes, setOnYes] = useState(false);
 
   const fetch = async () => {
-    await getDocs(collection(db, "songs"))
+    let q = collection(db, "songs")
+    if(type !== undefined || filter !== undefined){
+
+      let newType = type
+
+      switch (newType) {
+        case "artist":
+          newType = "artist.name"
+          setNewSongArtist(sessionArtists.findIndex(a=>a.name === filter))
+          break;
+        case "type":
+          setNewSongType(filter)
+          break;
+      
+        default:
+          break;
+      }
+
+      q = query(collection(db, "songs"), where(newType, "==", filter))
+    }
+    await getDocs(q)
         .then((querySnapshot)=>{              
             const newData = querySnapshot.docs
                 .map((doc) => ({...doc.data(), id:doc.id }));
-            setallSongs(newData);                
+                setallSongs(newData);                
         })
   }
   
@@ -153,11 +174,10 @@ export default function ArtistsPage() {
     })
   }
 
-  
 
   useEffect(() => {
     fetch()
-  }, [])
+  }, [type, filter])
 
   
   useEffect(() => {
@@ -248,6 +268,7 @@ export default function ArtistsPage() {
           SelectProps={{
             native: true,
           }}
+          defaultValue={newSongArtist}
           onChange={e=>setNewSongArtist(e.target.value)}
         >
           {
@@ -262,10 +283,11 @@ export default function ArtistsPage() {
           SelectProps={{
             native: true,
           }}
+          defaultValue={newSongType}
           onChange={e=>setNewSongType(e.target.value)}
         >
           <option value="Contemporary">Contemporary</option>
-          <option value="Hymns/Classics">Hymns / Classics</option>
+          <option value="Hymns-Classics">Hymns / Classics</option>
         </TextField>
         <textarea style={{minWidth: '100%'}} rows={24} placeholder="Lyrics" onBlur={e=>setNewSongLyrics(e.target.value.replace(/\r?\n/g,"&#13;"))}/>
       </Stack>
@@ -319,7 +341,7 @@ export default function ArtistsPage() {
       onChange={e=>setNewSongType(e.target.value)}
     >
       <option value="Contemporary">Contemporary</option>
-      <option value="Hymns/Classics">Hymns / Classics</option>
+      <option value="Hymns-Classics">Hymns / Classics</option>
     </TextField>
     <textarea style={{minWidth: '100%'}} rows={24} defaultValue={newSongLyrics.replaceAll("&#13;","\r\n")} placeholder="Lyrics" onBlur={e=>setNewSongLyrics(e.target.value.replace(/\r?\n/g,"&#13;"))}/>
   </Stack>
@@ -398,13 +420,13 @@ export default function ArtistsPage() {
   return (
     <>
       <Helmet>
-        <title> Songs / Hymns | Minimal UI </title>
+        <title> Songs / Hymns | WorshipHIM </title>
       </Helmet>
 
       <Container>
         <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
           <Typography variant="h4" gutterBottom>
-            Songs / Hymns
+            {filter!=="" ? filter : "Songs / Hymns"}
           </Typography>
           <Button variant="contained" startIcon={<Iconify icon="eva:plus-fill" />}  onClick={()=>handleDialog('New', <IfNew/>,"new")}>
             New Song / Hymn
@@ -412,7 +434,7 @@ export default function ArtistsPage() {
         </Stack>
 
         <Card>
-          <DynamicListToolbar numSelected={selected.length} filterName={filterName} onFilterName={handleFilterByName} pageName="songs / hymns" />
+          <DynamicListToolbar numSelected={selected.length} filterName={filterName} onFilterName={handleFilterByName} pageName={filter!== "" ? filter : "songs / hymns"} />
 
           <Scrollbar>
             <TableContainer sx={{ minWidth: 800 }}>
@@ -465,11 +487,15 @@ export default function ArtistsPage() {
                         </TableCell>
 
                         <TableCell align="left">
-                          <Label sx={{cursor: 'pointer'}} color={(artist.type === 'Artist' && 'error') || 'success'}>{`${artist.name} - ${artist.type}`}</Label>
+                          <Label sx={{cursor: 'pointer'}} color={(artist.type === 'Artist' && 'error') || 'success'}>
+                            <Link to={`/dashboard/songs/${artist.name}/artist`}>{`${artist.name} - ${artist.type}`}</Link>
+                          </Label>
                         </TableCell>
 
                         <TableCell align="left">
-                          <Label sx={{cursor: 'pointer'}} color={(type === "Contemporary" && 'primary') || 'warning'}>{type}</Label>
+                          <Label sx={{cursor: 'pointer'}} color={(type === "Contemporary" && 'primary') || 'warning'}>
+                            <Link to={`/dashboard/songs/${type}/type`}>{type}</Link>
+                          </Label>
                         </TableCell>
 
                         <TableCell align="left">

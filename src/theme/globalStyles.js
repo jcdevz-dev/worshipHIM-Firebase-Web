@@ -12,6 +12,18 @@ export default function GlobalStyles() {
           color: '#029af3',
           fontWeight: 'bold'
         },
+        'a:link': {
+          textDecoration: 'none'
+        },
+        'a:visited': {
+          textDecoration: 'none',
+        },
+        'a:hover': {
+          textDecoration: 'none'
+        },
+        'a:active': {
+          textDecoration: 'none'
+        },
         '*': {
           boxSizing: 'border-box',
         },

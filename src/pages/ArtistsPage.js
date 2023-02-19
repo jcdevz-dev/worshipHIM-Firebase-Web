@@ -2,7 +2,7 @@ import { Helmet } from 'react-helmet-async';
 import { filter } from 'lodash';
 import { sentenceCase } from 'change-case';
 import { useEffect, useState  } from 'react';
-
+import { Link } from "react-router-dom";
 // @mui
 import {
   Card,
@@ -25,7 +25,7 @@ import {
 } from '@mui/material';
 
 // firebase
-import { collection, doc, addDoc, getDocs, deleteDoc, setDoc, onSnapshot } from "firebase/firestore";
+import { collection, doc, addDoc, getDocs, deleteDoc, setDoc } from "firebase/firestore";
 import { db } from '../firebase/firebase';
 
 // components
@@ -301,7 +301,7 @@ export default function ArtistsPage() {
   return (
     <>
       <Helmet>
-        <title> Artists / Band | Minimal UI </title>
+        <title> Artists / Band | WorshipHIM </title>
       </Helmet>
 
       <Container>
@@ -344,13 +344,13 @@ export default function ArtistsPage() {
                           <Stack direction="row" alignItems="center" spacing={2}>
                             {/* <Avatar alt={name} src={avatarUrl} /> */}
                             <Typography variant="subtitle2" noWrap>
-                              {name}
+                              <Link to={`/dashboard/artists/${name}/artist`}>{name}</Link>
                             </Typography>
                           </Stack>
                         </TableCell>
 
                         <TableCell align="left">
-                          <Label color={(type === 'Artist' && 'error') || 'success'}>{sentenceCase(type)}</Label>
+                          <Label color={(type === 'Artist' && 'error') || 'success'}>{type}</Label>
                         </TableCell>
 
                         <TableCell align="right">
