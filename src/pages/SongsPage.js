@@ -45,8 +45,9 @@ import { transpose } from '../components/highlighter'
 const TABLE_HEAD = [
   { id: 'name', label: 'Name', alignRight: false },
   { id: 'key', label: 'Key', alignRight: false },
+  { id: 'capo', label: 'Capo', alignRight: false },
   { id: 'artist', label: 'Artist/Band', alignRight: false },
-  { id: 'isHymn', label: 'Type', alignRight: false },
+  { id: 'type', label: 'Type', alignRight: false },
   { id: 'lyrics', label: 'Lyrics', alignRight: false },
   { id: '' },
 ];
@@ -108,13 +109,12 @@ export default function ArtistsPage() {
   const [dialogData, setDialogData] = useState({title:'',msg:''});
   const [selectedID, setSelectedID] = useState('');
   const [action, setAction] = useState('delete');
-  const [newType, setNewType] = useState('Artist');
-  const [newArtistName, setNewArtistName] = useState('');
   const [sessionArtists, setsessionArtists] = useState(JSON.parse(sessionStorage.getItem('artists')));
   const [newSongName, setNewSongName] = useState('');
   const [newSongKey, setNewSongKey] = useState('');
-  const [newSongArtist, setNewSongArtist] = useState(sessionArtists[0]);
-  const [newSongType, setNewSongType] = useState(false);
+  const [newSongCapo, setNewSongCapo] = useState(0);
+  const [newSongArtist, setNewSongArtist] = useState(0);
+  const [newSongType, setNewSongType] = useState("Contemporary");
   const [newSongLyrics, setNewSongLyrics] = useState('');
   // const [onYes, setOnYes] = useState(false);
 
@@ -177,7 +177,14 @@ export default function ArtistsPage() {
         break;
 
       case "update":
-        update(selectedID,{name:newArtistName, type: newType})
+        update(selectedID,{
+          name:newSongName,
+          key:newSongKey,
+          capo:newSongCapo,
+          type:newSongType,
+          artist:sessionArtists[newSongArtist],
+          lyrics: newSongLyrics
+        })
         setOpen(false)
         setOpenDialog(false)
         break;
@@ -186,8 +193,9 @@ export default function ArtistsPage() {
         add({
           name:newSongName,
           key:newSongKey,
-          isHymn:newSongType,
-          artist:newSongArtist,
+          capo:newSongCapo,
+          type:newSongType,
+          artist:sessionArtists[newSongArtist],
           lyrics: newSongLyrics
         })
         setOpen(false)
@@ -213,9 +221,6 @@ export default function ArtistsPage() {
     transpose()
   }
 
-  // const Lyrics = ({lyrics}) => {
-  //   console.log(lyrics.replaceAll("\\n", "<br/>"))
-  // }
 
   const IfNew = () => (
       <Stack spacing={4} pt={2} sx={{minWidth: 500}}>
@@ -223,20 +228,23 @@ export default function ArtistsPage() {
         label="Song Name" 
         variant="outlined" 
         fullWidth 
-        defaultValue=""
         onBlur={e=>setNewSongName(e.target.value)}
         />
         <TextField 
         label="Song Key" 
         variant="outlined" 
         fullWidth 
-        defaultValue=""
         onBlur={e=>setNewSongKey(e.target.value)}
+        />
+        <TextField 
+        label="Capo" 
+        variant="outlined" 
+        fullWidth 
+        onBlur={e=>setNewSongCapo(e.target.value)}
         />
         <TextField
           select
           label="Artist / Band"
-          defaultValue={newType}
           SelectProps={{
             native: true,
           }}
@@ -244,53 +252,77 @@ export default function ArtistsPage() {
         >
           {
             sessionArtists?.map((a,key)=>(
-              <option key={key} value={a}>{a.name}</option>
+              <option key={key} value={key}>{a.name}</option>
             ))
           }
         </TextField>
         <TextField
           select
           label="Type"
-          defaultValue={newType}
           SelectProps={{
             native: true,
           }}
           onChange={e=>setNewSongType(e.target.value)}
         >
-          <option value={false}>Contemporary</option>
-          <option value>Hymns / Classics</option>
+          <option value="Contemporary">Contemporary</option>
+          <option value="Hymns/Classics">Hymns / Classics</option>
         </TextField>
-        <TextareaAutosize
-          aria-label="empty textarea"
-          placeholder="Lyrics"
-          style={{ width: 'auto', height: 300 }}
-          onBlur={e=>setNewSongLyrics(e.target.value.replace(/\r?\n/g,"&#13;"))}
-        />
+        <textarea style={{minWidth: '100%'}} rows={24} placeholder="Lyrics" onBlur={e=>setNewSongLyrics(e.target.value.replace(/\r?\n/g,"&#13;"))}/>
       </Stack>
   )
 
   const IfEdit = () => (
-      <Stack spacing={4} pt={2} sx={{minWidth: 350}}>
-        <TextField 
-        label="Artist Name" 
-        variant="outlined" 
-        fullWidth 
-        defaultValue={newArtistName}
-        onBlur={e=>setNewArtistName(e.target.value)}
-        />
-        <TextField
-          select
-          label="Type"
-          defaultValue={newType}
-          SelectProps={{
-            native: true,
-          }}
-          onChange={e=>setNewType(e.target.value)}
-        >
-            <option value="Artist">Artist</option>
-            <option value="Band">Band</option>
-        </TextField>
-      </Stack>
+    <Stack spacing={4} pt={2} sx={{minWidth: 500}}>
+    <TextField 
+    label="Song Name" 
+    variant="outlined" 
+    fullWidth 
+    defaultValue={newSongName}
+    onBlur={e=>setNewSongName(e.target.value)}
+    />
+    <TextField 
+    label="Song Key" 
+    variant="outlined" 
+    fullWidth 
+    defaultValue={newSongKey}
+    onBlur={e=>setNewSongKey(e.target.value)}
+    />
+    <TextField 
+      label="Capo" 
+      variant="outlined" 
+      fullWidth 
+    defaultValue={newSongCapo}
+    onBlur={e=>setNewSongCapo(e.target.value)}
+      />
+    <TextField
+      select
+      label="Artist / Band"
+      defaultValue={newSongArtist}
+      SelectProps={{
+        native: true,
+      }}
+      onChange={e=>setNewSongArtist(e.target.value)}
+    >
+      {
+        sessionArtists?.map((a,key)=>(
+          <option key={key} value={key}>{a.name}</option>
+        ))
+      }
+    </TextField>
+    <TextField
+      select
+      label="Type"
+      defaultValue={newSongType}
+      SelectProps={{
+        native: true,
+      }}
+      onChange={e=>setNewSongType(e.target.value)}
+    >
+      <option value="Contemporary">Contemporary</option>
+      <option value="Hymns/Classics">Hymns / Classics</option>
+    </TextField>
+    <textarea style={{minWidth: '100%'}} rows={24} defaultValue={newSongLyrics.replaceAll("&#13;","\r\n")} placeholder="Lyrics" onBlur={e=>setNewSongLyrics(e.target.value.replace(/\r?\n/g,"&#13;"))}/>
+  </Stack>
   )
   
 
@@ -300,10 +332,14 @@ export default function ArtistsPage() {
     setOpenDialog(true)
   }
 
-  const handleOpenMenu = (event,id,name,type) => {
+  const handleOpenMenu = (event,id, name, key, capo, artist, type, lyrics) => {
     setSelectedID(id)
-    setNewArtistName(name)
-    setNewType(type)
+    setNewSongName(name);
+    setNewSongKey(key);
+    setNewSongCapo(capo);
+    setNewSongArtist(artist);
+    setNewSongType(type);
+    setNewSongLyrics(lyrics);
     setOpen(event.currentTarget);
   };
 
@@ -392,7 +428,7 @@ export default function ArtistsPage() {
                 />
                 <TableBody>
                   {filteredSongs.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
-                    const { id, name, key, artist, isHymn, lyrics } = row;
+                    const { id, name, key, capo, artist, type, lyrics } = row;
                     const selectedUser = selected.indexOf(name) !== -1;
 
                     return (
@@ -419,12 +455,21 @@ export default function ArtistsPage() {
                           </Stack>
                         </TableCell>
 
+                        <TableCell component="th" scope="row" padding="none">
+                          <Stack direction="row" alignItems="center" spacing={2}>
+                            {/* <Avatar alt={name} src={avatarUrl} /> */}
+                            <Typography variant="subtitle2" noWrap>
+                              {capo}
+                            </Typography>
+                          </Stack>
+                        </TableCell>
+
                         <TableCell align="left">
                           <Label sx={{cursor: 'pointer'}} color={(artist.type === 'Artist' && 'error') || 'success'}>{`${artist.name} - ${artist.type}`}</Label>
                         </TableCell>
 
                         <TableCell align="left">
-                          <Label sx={{cursor: 'pointer'}} color={(isHymn && 'primary') || 'warning'}>{isHymn? "Hymn/Classic" : "Contemporary"}</Label>
+                          <Label sx={{cursor: 'pointer'}} color={(type === "Contemporary" && 'primary') || 'warning'}>{type}</Label>
                         </TableCell>
 
                         <TableCell align="left">
@@ -432,7 +477,7 @@ export default function ArtistsPage() {
                         </TableCell>
 
                         <TableCell align="right">
-                          <IconButton size="large" color="inherit" onClick={(e)=>handleOpenMenu(e,id,name,artist.type)}>
+                          <IconButton size="large" color="inherit" onClick={(e)=>handleOpenMenu(e,id, name, key, capo, sessionArtists.findIndex(a=>a.name === artist.name), type, lyrics)}>
                             <Iconify icon={'eva:more-vertical-fill'} />
                           </IconButton>
                         </TableCell>
