@@ -261,6 +261,8 @@ export default function SongsPage() {
         label="Capo" 
         variant="outlined" 
         fullWidth 
+        type="number"
+        defaultValue={newSongCapo}
         onBlur={e=>setNewSongCapo(e.target.value)}
         />
         <TextField
@@ -314,8 +316,9 @@ export default function SongsPage() {
       label="Capo" 
       variant="outlined" 
       fullWidth 
-    defaultValue={newSongCapo}
-    onBlur={e=>setNewSongCapo(e.target.value)}
+      type="number"
+      defaultValue={newSongCapo}
+      onBlur={e=>setNewSongCapo(e.target.value)}
       />
     <TextField
       select
@@ -430,7 +433,7 @@ export default function SongsPage() {
             {filter!== undefined ? filter : "Songs / Hymns"}
           </Typography>
           <Button variant="contained" startIcon={<Iconify icon="eva:plus-fill" />}  onClick={()=>handleDialog('New', <IfNew/>,"new")}>
-            New Song / Hymn
+            New Songs / Hymns
           </Button>
         </Stack>
 

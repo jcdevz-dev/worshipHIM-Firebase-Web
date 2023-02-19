@@ -43,6 +43,7 @@ export default function Router() {
         { element: <Navigate to="/dashboard/app" />, index: true },
         { path: 'app', element: <DashboardAppPage /> },
         { path: 'artists',element: <ArtistsPage />},
+        { path: 'artists/:type', element: <ArtistsPage /> },
         { path: 'artists/:filter/:type', element: <SongsPage /> },
         { path: 'songs', element: <SongsPage /> },
         { path: 'songs/:filter/:type', element: <SongsPage /> },

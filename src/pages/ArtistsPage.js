@@ -2,7 +2,7 @@ import { Helmet } from 'react-helmet-async';
 import { filter } from 'lodash';
 import { sentenceCase } from 'change-case';
 import { useEffect, useState  } from 'react';
-import { Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 // @mui
 import {
   Card,
@@ -25,7 +25,7 @@ import {
 } from '@mui/material';
 
 // firebase
-import { collection, doc, addDoc, getDocs, deleteDoc, setDoc } from "firebase/firestore";
+import { collection, doc, addDoc, getDocs, deleteDoc, setDoc, query, where } from "firebase/firestore";
 import { db } from '../firebase/firebase';
 
 // components
@@ -80,6 +80,7 @@ function applySortFilter(array, comparator, query) {
 
 export default function ArtistsPage() {
 
+  const { type } = useParams();
 
   const [allArtists, setallArtists] = useState([]);
 
@@ -109,7 +110,24 @@ export default function ArtistsPage() {
   // const [onYes, setOnYes] = useState(false);
 
   const fetch = async () => {
-    await getDocs(collection(db, "artists"))
+    let q = collection(db, "artists")
+    if(type !== undefined){
+
+      switch (type) {
+        case "Artist":
+          setNewType(type)
+          break;
+        case "Band":
+          setNewType(type)
+          break;
+      
+        default:
+          break;
+      }
+
+      q = query(collection(db, "artists"), where("type", "==", type))
+    }
+    await getDocs(q)
         .then((querySnapshot)=>{              
             const newData = querySnapshot.docs
                 .map((doc) => ({...doc.data(), id:doc.id }));
@@ -147,7 +165,7 @@ export default function ArtistsPage() {
 
   useEffect(() => {
     fetch()
-  }, [])
+  }, [type])
 
   
   useEffect(() => {
@@ -307,10 +325,10 @@ export default function ArtistsPage() {
       <Container>
         <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
           <Typography variant="h4" gutterBottom>
-            Artists / Band
+            {type !== undefined ? type : "Artists / Band"}
           </Typography>
           <Button variant="contained" startIcon={<Iconify icon="eva:plus-fill" />}  onClick={()=>handleDialog('New', <IfNew/>,"new")}>
-            New Artist / Band
+            New {type !== undefined ? type : "Artists / Band"}
           </Button>
         </Stack>
 
@@ -350,7 +368,9 @@ export default function ArtistsPage() {
                         </TableCell>
 
                         <TableCell align="left">
-                          <Label color={(type === 'Artist' && 'error') || 'success'}>{type}</Label>
+                          <Label color={(type === 'Artist' && 'error') || 'success'}>
+                            <Link to={`/dashboard/artists/${type}`}>{type}</Link>
+                          </Label>
                         </TableCell>
 
                         <TableCell align="right">
@@ -430,7 +450,7 @@ export default function ArtistsPage() {
           Edit
         </MenuItem>
 
-        <MenuItem sx={{ color: 'error.main' }} onClick={()=>handleDialog('Delete', "Are you sure you want to delete this artists? this can't be undone!","delete")}>
+        <MenuItem sx={{ color: 'error.main' }} onClick={()=>handleDialog('Delete', `Are you sure you want to delete this ${type !== undefined ? type : "Artists / Band"}? this can't be undone!`,"delete")}>
           <Iconify icon={'eva:trash-2-outline'} sx={{ mr: 2 }} />
           Delete
         </MenuItem>
