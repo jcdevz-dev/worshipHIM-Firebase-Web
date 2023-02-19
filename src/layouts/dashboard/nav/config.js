@@ -21,11 +21,6 @@ const navConfig = [
     path: '/dashboard/songs',
     icon: icon('ic_user'),
   },
-  {
-    title: 'hymns',
-    path: '/dashboard/hymns',
-    icon: icon('ic_user'),
-  },
   // {
   //   title: 'product',
   //   path: '/dashboard/products',

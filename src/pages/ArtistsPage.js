@@ -25,7 +25,7 @@ import {
 } from '@mui/material';
 
 // firebase
-import { collection, doc, addDoc, getDocs, deleteDoc, setDoc } from "firebase/firestore";
+import { collection, doc, addDoc, getDocs, deleteDoc, setDoc, onSnapshot } from "firebase/firestore";
 import { db } from '../firebase/firebase';
 
 // components
@@ -113,7 +113,7 @@ export default function ArtistsPage() {
         .then((querySnapshot)=>{              
             const newData = querySnapshot.docs
                 .map((doc) => ({...doc.data(), id:doc.id }));
-            setallArtists(newData);                
+            setallArtists(newData);             
         })
   }
   

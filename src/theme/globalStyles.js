@@ -7,6 +7,11 @@ export default function GlobalStyles() {
   const inputGlobalStyles = (
     <MUIGlobalStyles
       styles={{
+        '.c':{
+          cursor: 'pointer',
+          color: '#029af3',
+          fontWeight: 'bold'
+        },
         '*': {
           boxSizing: 'border-box',
         },

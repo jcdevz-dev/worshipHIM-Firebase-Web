@@ -1,5 +1,5 @@
-import { useContext } from 'react';
-import { Navigate, useRoutes } from 'react-router-dom';
+import { useContext, useEffect, useState } from 'react';
+import { Navigate, useRoutes, useNavigate } from 'react-router-dom';
 
 import { UserContext } from './context/auth';
 
@@ -21,18 +21,29 @@ import DashboardAppPage from './pages/DashboardAppPage';
 export default function Router() {
 
   const userAuth = useContext(UserContext);  
+  const navigate = useNavigate();
 
+  const [loading, setloading] = useState(!userAuth.valid)
+
+  useEffect(() => {
+    setloading(!userAuth.valid)
+    setTimeout(() => {
+      if(userAuth.name===""){
+        navigate('/login', { replace: true });
+      }
+    }, 500);
+  }, [userAuth.valid, userAuth.name])
+  
 
   const routes = useRoutes([
     {
       path: '/dashboard',
-      element: userAuth.valid ?<DashboardLayout /> : <Navigate to="/login" replace />,
+      element: <DashboardLayout loading={loading} />,
       children: [
         { element: <Navigate to="/dashboard/app" />, index: true },
         { path: 'app', element: <DashboardAppPage /> },
         { path: 'artists', element: <ArtistsPage /> },
         { path: 'songs', element: <SongsPage /> },
-        { path: 'hymns', element: <SongsPage /> },
         // { path: 'user', element: <UserPage /> },
         // { path: 'products', element: <ProductsPage /> },
         // { path: 'blog', element: <BlogPage /> },

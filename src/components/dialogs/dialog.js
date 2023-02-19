@@ -7,10 +7,10 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
 export default function DynamicDialog({data, openDialog, setOpenDialog, onYes}) {
-
   return (
     <div>
-      <Dialog
+      <Dialog 
+        maxWidth="md"
         open={openDialog}
         onClose={()=>setOpenDialog(false)}
         aria-labelledby="alert-dialog-title"
@@ -24,12 +24,17 @@ export default function DynamicDialog({data, openDialog, setOpenDialog, onYes}) 
             {data.msg}
           {/* </DialogContentText> */}
         </DialogContent>
-        <DialogActions>
-          <Button onClick={()=>onYes()} autoFocus>
-            yes
-          </Button>
-          <Button onClick={()=>setOpenDialog(false)}>No</Button>
-        </DialogActions>
+          <DialogActions>
+            {
+            !data.hidden &&
+              <>
+                <Button onClick={()=>onYes()} autoFocus>
+                  yes
+                </Button>
+                <Button onClick={()=>setOpenDialog(false)}>No</Button>
+              </>
+            }
+          </DialogActions>
       </Dialog>
     </div>
   );

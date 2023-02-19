@@ -22,6 +22,7 @@ import {
   TableContainer,
   TablePagination,
   TextField,
+  TextareaAutosize
 } from '@mui/material';
 
 // firebase
@@ -37,13 +38,16 @@ import DynamicDialog from '../components/dialogs/dialog';
 // sections
 import { DynamicListHead, DynamicListToolbar } from '../sections/@dashboard/dynamicTable';
 
-
+import { transpose } from '../components/highlighter'
 
 // ----------------------------------------------------------------------
 
 const TABLE_HEAD = [
   { id: 'name', label: 'Name', alignRight: false },
-  { id: 'type', label: 'Type', alignRight: false },
+  { id: 'key', label: 'Key', alignRight: false },
+  { id: 'artist', label: 'Artist/Band', alignRight: false },
+  { id: 'isHymn', label: 'Type', alignRight: false },
+  { id: 'lyrics', label: 'Lyrics', alignRight: false },
   { id: '' },
 ];
 
@@ -81,9 +85,9 @@ function applySortFilter(array, comparator, query) {
 export default function ArtistsPage() {
 
 
-  const [allArtists, setallArtists] = useState([]);
+  const [allSongs, setallSongs] = useState([]);
 
-  const [filteredArtists, setfilteredArtists] = useState([]);
+  const [filteredSongs, setfilteredSongs] = useState([]);
 
   const [open, setOpen] = useState(null);
 
@@ -106,15 +110,20 @@ export default function ArtistsPage() {
   const [action, setAction] = useState('delete');
   const [newType, setNewType] = useState('Artist');
   const [newArtistName, setNewArtistName] = useState('');
+  const [sessionArtists, setsessionArtists] = useState(JSON.parse(sessionStorage.getItem('artists')));
+  const [newSongName, setNewSongName] = useState('');
+  const [newSongKey, setNewSongKey] = useState('');
+  const [newSongArtist, setNewSongArtist] = useState(sessionArtists[0]);
+  const [newSongType, setNewSongType] = useState(false);
+  const [newSongLyrics, setNewSongLyrics] = useState('');
   // const [onYes, setOnYes] = useState(false);
 
   const fetch = async () => {
     await getDocs(collection(db, "songs"))
         .then((querySnapshot)=>{              
             const newData = querySnapshot.docs
-                .map((doc) => ({...doc.data(),a:doc.data().artist.get, id:doc.id }));
-            console.log(newData)
-            setallArtists(newData);                
+                .map((doc) => ({...doc.data(), id:doc.id }));
+            setallSongs(newData);                
         })
   }
   
@@ -152,10 +161,10 @@ export default function ArtistsPage() {
 
   
   useEffect(() => {
-    if(allArtists.length > 0){
-      setfilteredArtists(applySortFilter(allArtists, getComparator(order, orderBy), filterName))
+    if(allSongs.length > 0){
+      setfilteredSongs(applySortFilter(allSongs, getComparator(order, orderBy), filterName))
     }
-  }, [allArtists,order,orderBy,filterName])
+  }, [allSongs,order,orderBy,filterName])
 
 
   const onYes = () =>{
@@ -174,7 +183,13 @@ export default function ArtistsPage() {
         break;
     
       case "new":
-        add({name:newArtistName, type: newType})
+        add({
+          name:newSongName,
+          key:newSongKey,
+          isHymn:newSongType,
+          artist:newSongArtist,
+          lyrics: newSongLyrics
+        })
         setOpen(false)
         setOpenDialog(false)
         break;
@@ -185,15 +200,54 @@ export default function ArtistsPage() {
   }
 
 
+  const Lyrics = ({lyrics}) => (
+      <Stack spacing={4} p={2} sx={{minWidth: 350}}>
+        <pre id="lyrics" data-key="A" style={{ width: 'auto', height: 300 }}>
+          {lyrics.replaceAll("&#13;","\r\n")}
+        </pre>
+      </Stack>
+  )
+
+  const handlePreviewLyrics = async (lyrics) =>{
+    await handleDialog('Lyrics', <Lyrics lyrics={lyrics}/> ,"lyrics", true)
+    transpose()
+  }
+
+  // const Lyrics = ({lyrics}) => {
+  //   console.log(lyrics.replaceAll("\\n", "<br/>"))
+  // }
+
   const IfNew = () => (
-      <Stack spacing={4} pt={2} sx={{minWidth: 350}}>
+      <Stack spacing={4} pt={2} sx={{minWidth: 500}}>
         <TextField 
-        label="Artist Name" 
+        label="Song Name" 
         variant="outlined" 
         fullWidth 
         defaultValue=""
-        onBlur={e=>setNewArtistName(e.target.value)}
+        onBlur={e=>setNewSongName(e.target.value)}
         />
+        <TextField 
+        label="Song Key" 
+        variant="outlined" 
+        fullWidth 
+        defaultValue=""
+        onBlur={e=>setNewSongKey(e.target.value)}
+        />
+        <TextField
+          select
+          label="Artist / Band"
+          defaultValue={newType}
+          SelectProps={{
+            native: true,
+          }}
+          onChange={e=>setNewSongArtist(e.target.value)}
+        >
+          {
+            sessionArtists?.map((a,key)=>(
+              <option key={key} value={a}>{a.name}</option>
+            ))
+          }
+        </TextField>
         <TextField
           select
           label="Type"
@@ -201,11 +255,17 @@ export default function ArtistsPage() {
           SelectProps={{
             native: true,
           }}
-          onChange={e=>setNewType(e.target.value)}
+          onChange={e=>setNewSongType(e.target.value)}
         >
-            <option value="Artist">Artist</option>
-            <option value="Band">Band</option>
+          <option value={false}>Contemporary</option>
+          <option value>Hymns / Classics</option>
         </TextField>
+        <TextareaAutosize
+          aria-label="empty textarea"
+          placeholder="Lyrics"
+          style={{ width: 'auto', height: 300 }}
+          onBlur={e=>setNewSongLyrics(e.target.value.replace(/\r?\n/g,"&#13;"))}
+        />
       </Stack>
   )
 
@@ -234,9 +294,9 @@ export default function ArtistsPage() {
   )
   
 
-  const handleDialog = (title,msg,type) => {
+  const handleDialog = (title,msg,type, hidden=false) => {
     setAction(type)
-    setDialogData({title,msg})
+    setDialogData({title,msg,hidden})
     setOpenDialog(true)
   }
 
@@ -259,7 +319,7 @@ export default function ArtistsPage() {
 
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
-      const newSelecteds = allArtists?.map((n) => n.name);
+      const newSelecteds = allSongs?.map((n) => n.name);
       setSelected(newSelecteds);
       return;
     }
@@ -295,28 +355,28 @@ export default function ArtistsPage() {
     setFilterName(event.target.value);
   };
 
-  const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - allArtists?.length) : 0;
+  const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - allSongs?.length) : 0;
 
-  const isNotFound = !filteredArtists.length && !!filterName;
+  const isNotFound = !filteredSongs.length && !!filterName;
 
   return (
     <>
       <Helmet>
-        <title> Artists / Band | Minimal UI </title>
+        <title> Songs / Hymns | Minimal UI </title>
       </Helmet>
 
       <Container>
         <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
           <Typography variant="h4" gutterBottom>
-            Artists / Band
+            Songs / Hymns
           </Typography>
           <Button variant="contained" startIcon={<Iconify icon="eva:plus-fill" />}  onClick={()=>handleDialog('New', <IfNew/>,"new")}>
-            New Artist / Band
+            New Song / Hymn
           </Button>
         </Stack>
 
         <Card>
-          <DynamicListToolbar numSelected={selected.length} filterName={filterName} onFilterName={handleFilterByName} pageName="artists / band" />
+          <DynamicListToolbar numSelected={selected.length} filterName={filterName} onFilterName={handleFilterByName} pageName="songs / hymns" />
 
           <Scrollbar>
             <TableContainer sx={{ minWidth: 800 }}>
@@ -325,14 +385,14 @@ export default function ArtistsPage() {
                   order={order}
                   orderBy={orderBy}
                   headLabel={TABLE_HEAD}
-                  rowCount={allArtists.length}
+                  rowCount={allSongs.length}
                   numSelected={selected.length}
                   onRequestSort={handleRequestSort}
                   onSelectAllClick={handleSelectAllClick}
                 />
                 <TableBody>
-                  {filteredArtists.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
-                    const { id, name, type } = row;
+                  {filteredSongs.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
+                    const { id, name, key, artist, isHymn, lyrics } = row;
                     const selectedUser = selected.indexOf(name) !== -1;
 
                     return (
@@ -350,12 +410,29 @@ export default function ArtistsPage() {
                           </Stack>
                         </TableCell>
 
+                        <TableCell component="th" scope="row" padding="none">
+                          <Stack direction="row" alignItems="center" spacing={2}>
+                            {/* <Avatar alt={name} src={avatarUrl} /> */}
+                            <Typography variant="subtitle2" noWrap>
+                              {key}
+                            </Typography>
+                          </Stack>
+                        </TableCell>
+
                         <TableCell align="left">
-                          <Label color={(type === 'Artist' && 'error') || 'success'}>{sentenceCase(type)}</Label>
+                          <Label sx={{cursor: 'pointer'}} color={(artist.type === 'Artist' && 'error') || 'success'}>{`${artist.name} - ${artist.type}`}</Label>
+                        </TableCell>
+
+                        <TableCell align="left">
+                          <Label sx={{cursor: 'pointer'}} color={(isHymn && 'primary') || 'warning'}>{isHymn? "Hymn/Classic" : "Contemporary"}</Label>
+                        </TableCell>
+
+                        <TableCell align="left">
+                          <Label sx={{cursor: 'pointer'}} color={'info'} onClick={()=>handlePreviewLyrics(lyrics)}>Show</Label>
                         </TableCell>
 
                         <TableCell align="right">
-                          <IconButton size="large" color="inherit" onClick={(e)=>handleOpenMenu(e,id,name,type)}>
+                          <IconButton size="large" color="inherit" onClick={(e)=>handleOpenMenu(e,id,name,artist.type)}>
                             <Iconify icon={'eva:more-vertical-fill'} />
                           </IconButton>
                         </TableCell>
@@ -399,7 +476,7 @@ export default function ArtistsPage() {
           <TablePagination
             rowsPerPageOptions={[5, 10, 25]}
             component="div"
-            count={allArtists.length}
+            count={allSongs.length}
             rowsPerPage={rowsPerPage}
             page={page}
             onPageChange={handleChangePage}
@@ -431,7 +508,7 @@ export default function ArtistsPage() {
           Edit
         </MenuItem>
 
-        <MenuItem sx={{ color: 'error.main' }} onClick={()=>handleDialog('Delete', "Are you sure you want to delete this artists? this can't be undone!","delete")}>
+        <MenuItem sx={{ color: 'error.main' }} onClick={()=>handleDialog('Delete', "Are you sure you want to delete this song? this can't be undone!","delete")}>
           <Iconify icon={'eva:trash-2-outline'} sx={{ mr: 2 }} />
           Delete
         </MenuItem>

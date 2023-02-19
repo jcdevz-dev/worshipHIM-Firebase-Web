@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 // @mui
 import { styled } from '@mui/material/styles';
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
 //
 import Header from './header';
 import Nav from './nav';
@@ -32,11 +34,19 @@ const Main = styled('div')(({ theme }) => ({
 
 // ----------------------------------------------------------------------
 
-export default function DashboardLayout() {
+export default function DashboardLayout({loading}) {
+
   const [open, setOpen] = useState(false);
 
   return (
     <StyledRoot>
+      <Backdrop
+        sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open={loading}
+      >
+        <CircularProgress color="inherit" />
+      </Backdrop>
+      
       <Header onOpenNav={() => setOpen(true)} />
 
       <Nav openNav={open} onCloseNav={() => setOpen(false)} />
