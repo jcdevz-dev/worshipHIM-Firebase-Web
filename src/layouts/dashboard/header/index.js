@@ -7,11 +7,8 @@ import { bgBlur } from '../../../utils/cssStyles';
 // components
 import Iconify from '../../../components/iconify';
 //
-import Searchbar from './Searchbar';
 import AccountPopover from './AccountPopover';
-import LanguagePopover from './LanguagePopover';
-import NotificationsPopover from './NotificationsPopover';
-
+import SyncSwitch from './SyncSwitch';
 // ----------------------------------------------------------------------
 
 const NAV_WIDTH = 280;
@@ -68,8 +65,7 @@ export default function Header({ onOpenNav }) {
             sm: 1,
           }}
         >
-          {/* <LanguagePopover /> */}
-          {/* <NotificationsPopover /> */}
+          <SyncSwitch />
           <AccountPopover />
         </Stack>
       </StyledToolbar>

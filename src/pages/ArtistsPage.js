@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import { filter } from 'lodash';
 import { sentenceCase } from 'change-case';
-import { useEffect, useState  } from 'react';
+import { useEffect, useState, useContext  } from 'react';
 import { useParams, Link } from "react-router-dom";
 // @mui
 import {
@@ -22,11 +22,16 @@ import {
   TableContainer,
   TablePagination,
   TextField,
+  Backdrop,
+  CircularProgress
 } from '@mui/material';
 
+
 // firebase
-import { collection, doc, addDoc, getDocs, deleteDoc, setDoc, query, where } from "firebase/firestore";
+import { collection, doc, addDoc, getDocs, deleteDoc, setDoc, query, where, writeBatch } from "firebase/firestore";
 import { db } from '../firebase/firebase';
+
+import { generatePushID } from '../utils/generateFirebaseID';
 
 // components
 import Label from '../components/label';
@@ -34,9 +39,10 @@ import Iconify from '../components/iconify';
 import Scrollbar from '../components/scrollbar';
 import DynamicDialog from '../components/dialogs/dialog';
 
+import { UserContext } from '../context/auth';
+
 // sections
 import { DynamicListHead, DynamicListToolbar } from '../sections/@dashboard/dynamicTable';
-
 
 
 // ----------------------------------------------------------------------
@@ -78,7 +84,10 @@ function applySortFilter(array, comparator, query) {
   return stabilizedThis.map((el) => el[0]);
 }
 
+
 export default function ArtistsPage() {
+
+  const { isSync } = useContext(UserContext);  
 
   const { type } = useParams();
 
@@ -108,11 +117,13 @@ export default function ArtistsPage() {
   const [newType, setNewType] = useState('Artist');
   const [newArtistName, setNewArtistName] = useState('');
   // const [onYes, setOnYes] = useState(false);
+    
+  const [syncingOnline, setsyncingOnline] = useState(false)
+  const [toSyncLater, settoSyncLater] = useState([])
 
   const fetch = async () => {
     let q = collection(db, "artists")
     if(type !== undefined){
-
       switch (type) {
         case "Artist":
           setNewType(type)
@@ -120,21 +131,75 @@ export default function ArtistsPage() {
         case "Band":
           setNewType(type)
           break;
-      
         default:
           break;
       }
-
       q = query(collection(db, "artists"), where("type", "==", type))
     }
-    await getDocs(q)
-        .then((querySnapshot)=>{              
-            const newData = querySnapshot.docs
-                .map((doc) => ({...doc.data(), id:doc.id }));
-            setallArtists(newData);             
-        })
+    await getDocs(q, { includeMetadataChanges: true }).then((querySnapshot)=>{              
+          const newData = querySnapshot.docs.map((doc) => ({...doc.data(), id:doc.id }));
+          setallArtists(newData);             
+    })
   }
+
+
+
+  useEffect(() => {
+    fetch()
+  }, [type])
+
   
+  useEffect(() => {
+    if(allArtists.length > 0){
+      setfilteredArtists(applySortFilter(allArtists, getComparator(order, orderBy), filterName))
+    }
+  }, [allArtists,order,orderBy,filterName])
+
+  
+
+  useEffect(() => {
+    async function handleSyncing(){
+      await setsyncingOnline(true)
+      await fetch()
+      await setsyncingOnline(false)
+      await settoSyncLater([])
+    }
+    if(isSync){
+      handleSyncing()
+    }
+  }, [isSync])
+  
+  useEffect(() => {
+    if(toSyncLater.length > 0){
+      const batch = writeBatch(db);
+
+      console.log(toSyncLater);
+      // eslint-disable-next-line no-plusplus
+      for (let index = 0; index < toSyncLater.length; index++) {
+        const el = toSyncLater[index];
+        switch (el._handle_action) {
+          case "new":
+            batch.set(doc(db,'artists', el.id), {name: el.name, type: el.type})
+            break;
+          case "update":
+            batch.update(doc(db,'artists', el.id), {name: el.name, type: el.type})
+            break;
+          case "delete":
+            batch.delete(doc(db,'artists', el.id))
+            break;
+          default:
+            break;
+        }
+      }
+
+      batch.commit()
+
+      fetch()
+
+    }
+  }, [toSyncLater])
+
+
   const add = async (data) => {
     try {
         const docRef = await addDoc(collection(db, "artists"), data);
@@ -161,23 +226,29 @@ export default function ArtistsPage() {
     })
   }
 
-  
-
-  useEffect(() => {
-    fetch()
-  }, [type])
-
-  
-  useEffect(() => {
-    if(allArtists.length > 0){
-      setfilteredArtists(applySortFilter(allArtists, getComparator(order, orderBy), filterName))
-    }
-  }, [allArtists,order,orderBy,filterName])
-
 
   const onYes = () =>{
     switch (action) {
+      case "batchNew":
+        settoSyncLater([...toSyncLater,{name:newArtistName, type: newType, id: generatePushID(), _handle_action: 'new'}])
+        setOpenDialog(false)
+        setTimeout(() => {
+          setOpenDialog(true)
+        }, 300);
+        break;
 
+      case "batchUpdate":
+        settoSyncLater([...toSyncLater,{name:newArtistName, type: newType, id: selectedID, _handle_action: 'update'}])
+        setOpen(false)
+        setOpenDialog(false)
+        break;
+
+      case "batchDelete":
+        settoSyncLater([...toSyncLater,{id: selectedID, _handle_action: 'delete'}])
+        setOpen(false)
+        setOpenDialog(false)
+        break;
+        
       case "delete":
         remove(selectedID)
         setOpen(false)
@@ -252,7 +323,11 @@ export default function ArtistsPage() {
   
 
   const handleDialog = (title,msg,type) => {
-    setAction(type)
+    if(isSync){
+      setAction(type)
+    }else{
+      setAction(`batch${title}`)
+    }
     setDialogData({title,msg})
     setOpenDialog(true)
   }
@@ -318,6 +393,12 @@ export default function ArtistsPage() {
 
   return (
     <>
+      <Backdrop
+        sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open={syncingOnline}
+      >
+        <CircularProgress color="inherit" />
+      </Backdrop>
       <Helmet>
         <title> Artists / Band | WorshipHIM </title>
       </Helmet>

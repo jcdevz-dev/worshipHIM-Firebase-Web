@@ -1,6 +1,6 @@
 import React from 'react';
 import { onAuthStateChanged  } from "firebase/auth";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, disableNetwork, enableNetwork} from "firebase/firestore";
 import {auth, db} from '../firebase/firebase'
 
 export const UserContext = React.createContext();
@@ -10,7 +10,25 @@ export default function Auth({children}) {
     const [valid, setvalid] = React.useState(false)
     const [email, setemail] = React.useState('')
     const [name, setname] = React.useState('')
+    const [isSync, setisSync] = React.useState(false)
 
+    React.useEffect(() => {
+        
+        async function disableNet(){
+            await disableNetwork(db);
+        }
+        async function enableNet(){
+            await enableNetwork(db);
+        }
+        if(!isSync){
+            disableNet()
+            console.log("Network disabled!");
+        }else{
+            enableNet()
+            console.log("Network enabled!");
+        }
+    }, [isSync])
+    
 
 
     React.useEffect(()=>{
@@ -20,18 +38,6 @@ export default function Auth({children}) {
                 setvalid(true)
                 setname(user.displayName === null ? user.email.split('@')[0].toUpperCase() : user.displayName)
                 setemail(user.email)     
-                
-                const fetchArtists = async () => {
-                    await getDocs(collection(db, "artists"))
-                        .then((querySnapshot)=>{              
-                            const newData = querySnapshot.docs
-                                .map((doc) => ({...doc.data(), id:doc.id }));
-                                sessionStorage.setItem('artists', JSON.stringify(newData))       
-                        })
-                }
-                
-                fetchArtists()
-
             } else {
                 setvalid(false)
                 setname('')
@@ -48,7 +54,9 @@ export default function Auth({children}) {
             name,
             setname,
             valid,
-            setvalid
+            setvalid,
+            isSync,
+            setisSync
         }}>
         {children}
         </UserContext.Provider>
