@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import { filter } from 'lodash';
 import { sentenceCase } from 'change-case';
-import { useEffect, useState  } from 'react';
+import { useEffect, useState, useContext  } from 'react';
 import { useParams, Link } from 'react-router-dom';
 // @mui
 import {
@@ -22,18 +22,23 @@ import {
   TableContainer,
   TablePagination,
   TextField,
-  TextareaAutosize
+  Backdrop,
+  CircularProgress
 } from '@mui/material';
 
 // firebase
-import { collection, doc, addDoc, getDocs, deleteDoc, setDoc, where, query } from "firebase/firestore";
+import { collection, doc, addDoc, getDocs, deleteDoc, setDoc, where, query, writeBatch } from "firebase/firestore";
 import { db } from '../firebase/firebase';
+
+import { generatePushID } from '../utils/generateFirebaseID';
 
 // components
 import Label from '../components/label';
 import Iconify from '../components/iconify';
 import Scrollbar from '../components/scrollbar';
 import DynamicDialog from '../components/dialogs/dialog';
+
+import { UserContext } from '../context/auth';
 
 // sections
 import { DynamicListHead, DynamicListToolbar } from '../sections/@dashboard/dynamicTable';
@@ -85,8 +90,9 @@ function applySortFilter(array, comparator, query) {
 
 export default function SongsPage() {
 
-  const { filter, type } = useParams();
+  const { isSync } = useContext(UserContext);  
 
+  const { filter, type } = useParams();
 
   const [allSongs, setallSongs] = useState([]);
 
@@ -111,7 +117,7 @@ export default function SongsPage() {
   const [dialogData, setDialogData] = useState({title:'',msg:''});
   const [selectedID, setSelectedID] = useState('');
   const [action, setAction] = useState('delete');
-  const [sessionArtists, setsessionArtists] = useState(JSON.parse(sessionStorage.getItem('artists')));
+  const [sessionArtists, setsessionArtists] = useState([]);
   const [newSongName, setNewSongName] = useState('');
   const [newSongKey, setNewSongKey] = useState('');
   const [newSongCapo, setNewSongCapo] = useState(0);
@@ -119,6 +125,22 @@ export default function SongsPage() {
   const [newSongType, setNewSongType] = useState("Contemporary");
   const [newSongLyrics, setNewSongLyrics] = useState('');
   // const [onYes, setOnYes] = useState(false);
+
+  const [syncingOnline, setsyncingOnline] = useState(false)
+  const [toSyncLater, settoSyncLater] = useState([])
+
+  useEffect(() => {
+    async function getA(){
+      await getDocs(collection(db, "artists")).then((querySnapshot)=>{              
+          const newData = querySnapshot.docs
+              .map((doc) => ({...doc.data(), id:doc.id }));
+              setsessionArtists(newData);                
+      })
+    }
+      getA()
+  }, [])
+  
+
 
   const fetch = async () => {
     let q = collection(db, "songs")
@@ -141,7 +163,7 @@ export default function SongsPage() {
 
       q = query(collection(db, "songs"), where(newType, "==", filter))
     }
-    await getDocs(q)
+    await getDocs(q, { includeMetadataChanges: true })
         .then((querySnapshot)=>{              
             const newData = querySnapshot.docs
                 .map((doc) => ({...doc.data(), id:doc.id }));
@@ -149,6 +171,76 @@ export default function SongsPage() {
         })
   }
   
+
+
+  useEffect(() => {
+    fetch()
+  }, [type, filter])
+
+ 
+  useEffect(() => {
+    if(allSongs.length > 0){
+      setfilteredSongs(applySortFilter(allSongs, getComparator(order, orderBy), filterName))
+    }
+  }, [allSongs,order,orderBy,filterName])
+
+  useEffect(() => {
+    async function handleSyncing(){
+      await setsyncingOnline(true)
+      await fetch()
+      await setsyncingOnline(false)
+      await settoSyncLater([])
+    }
+    if(isSync){
+      handleSyncing()
+    }
+  }, [isSync])
+  
+  useEffect(() => {
+    if(toSyncLater.length > 0){
+      const batch = writeBatch(db);
+
+      console.log(toSyncLater);
+      // eslint-disable-next-line no-plusplus
+      for (let index = 0; index < toSyncLater.length; index++) {
+        const el = toSyncLater[index];
+        switch (el._handle_action) {
+          case "new":
+            batch.set(doc(db,'songs', el.id), {
+              name:el.name,
+              key:el.key,
+              capo:el.capo,
+              type:el.type,
+              artist:el.artist,
+              lyrics: el.lyrics
+            })
+            break;
+          case "update":
+            batch.update(doc(db,'songs', el.id), {
+              name:el.name,
+              key:el.key,
+              capo:el.capo,
+              type:el.type,
+              artist:el.artist,
+              lyrics: el.lyrics
+            })
+            break;
+          case "delete":
+            batch.delete(doc(db,'songs', el.id))
+            break;
+          default:
+            break;
+        }
+      }
+
+      batch.commit()
+
+      fetch()
+
+    }
+  }, [toSyncLater])
+
+
   const add = async (data) => {
     try {
         const docRef = await addDoc(collection(db, "songs"), data);
@@ -175,21 +267,47 @@ export default function SongsPage() {
     })
   }
 
-
-  useEffect(() => {
-    fetch()
-  }, [type, filter])
-
-  
-  useEffect(() => {
-    if(allSongs.length > 0){
-      setfilteredSongs(applySortFilter(allSongs, getComparator(order, orderBy), filterName))
-    }
-  }, [allSongs,order,orderBy,filterName])
-
-
+ 
   const onYes = () =>{
     switch (action) {
+
+      case "batchNew":
+        settoSyncLater([...toSyncLater,{
+          name:newSongName,
+          key:newSongKey,
+          capo:newSongCapo,
+          type:newSongType,
+          artist:sessionArtists[newSongArtist],
+          lyrics: newSongLyrics,
+          id: generatePushID(),
+          _handle_action: 'new'
+        }])
+        setOpenDialog(false)
+        setTimeout(() => {
+          setOpenDialog(true)
+        }, 300);
+        break;
+
+      case "batchUpdate":
+        settoSyncLater([...toSyncLater,{
+          name:newSongName,
+          key:newSongKey,
+          capo:newSongCapo,
+          type:newSongType,
+          artist:sessionArtists[newSongArtist],
+          lyrics: newSongLyrics,
+          id: selectedID,
+          _handle_action: 'update'
+        }])
+        setOpen(false)
+        setOpenDialog(false)
+        break;
+
+      case "batchDelete":
+        settoSyncLater([...toSyncLater,{id: selectedID, _handle_action: 'delete'}])
+        setOpen(false)
+        setOpenDialog(false)
+        break;
 
       case "delete":
         remove(selectedID)
@@ -353,7 +471,11 @@ export default function SongsPage() {
   
 
   const handleDialog = (title,msg,type, hidden=false) => {
-    setAction(type)
+    if(isSync){
+      setAction(type)
+    }else{
+      setAction(`batch${title}`)
+    }
     setDialogData({title,msg,hidden})
     setOpenDialog(true)
   }
@@ -423,6 +545,13 @@ export default function SongsPage() {
 
   return (
     <>
+
+      <Backdrop
+        sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open={syncingOnline}
+      >
+        <CircularProgress color="inherit" />
+      </Backdrop>
       <Helmet>
         <title> Songs / Hymns | WorshipHIM </title>
       </Helmet>
