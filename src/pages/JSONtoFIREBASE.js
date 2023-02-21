@@ -43,308 +43,353 @@ import hS from './oldData/Hymns Song List.json';
 
 const newAAA = [
     {
-        "type": "Artist",
-        "name": "Laura Story",
-        "id": "-NOoB4NG3BaBVYQkohsp"
-    },
-    {
-        "name": "Hymns And Classics",
-        "id": "-NOoB4NG5b_6p-XfbaEz",
-        "type": "Band"
-    },
-    {
-        "type": "Band",
-        "id": "-NOoB4NG5zj-2QrlXpvv",
-        "name": "Jesus Culture"
-    },
-    {
-        "type": "Band",
-        "id": "-NOoB4NG7I1x5PMtqORw",
-        "name": "Faith Music Manila"
-    },
-    {
-        "id": "-NOoB4NG9NydYaa-8y2d",
+        "id": "-NOoaH5n-Yg_sWeXm89V",
         "type": "Band",
         "name": "Bethel Worship"
     },
     {
-        "id": "-NOoB4NG9b6X94AzunsI",
-        "name": "David Crowder",
-        "type": "Artist"
-    },
-    {
-        "id": "-NOoB4NGKq3Ii9nryx97",
-        "type": "Band",
-        "name": "City Harvest Church"
-    },
-    {
-        "name": "7eventh Time Down",
-        "id": "-NOoB4NGLVYnFj23azW5",
-        "type": "Band"
-    },
-    {
-        "type": "Artist",
-        "name": "Jonalyn Viray",
-        "id": "-NOoB4NGLYi8YkyeW9mb"
-    },
-    {
-        "name": "Darlene Zschech",
-        "type": "Artist",
-        "id": "-NOoB4NGNIgAKB6OdEKH"
-    },
-    {
-        "name": "Gary Valenciano",
-        "id": "-NOoB4NGNRv5_XOcV8xa",
-        "type": "Artist"
-    },
-    {
-        "name": "Citipointe Live",
-        "id": "-NOoB4NGV8RO5OycbRIk",
-        "type": "Band"
-    },
-    {
-        "name": "For King And Country",
-        "type": "Band",
-        "id": "-NOoB4NGWd8OfYJ_uInE"
-    },
-    {
-        "name": "Brian Littrell",
-        "type": "Artist",
-        "id": "-NOoB4NGYUqBsSFUdpoK"
-    },
-    {
-        "id": "-NOoB4NGbKAuFdxPQdie",
-        "name": "Gateway Worship",
-        "type": "Band"
-    },
-    {
-        "id": "-NOoB4NGiojrj-D4-xxu",
-        "name": "Casting Crowns",
-        "type": "Band"
-    },
-    {
-        "id": "-NOoB4NGkJvfbJhODJ-f",
-        "name": "Elevation Worship",
-        "type": "Band"
-    },
-    {
-        "type": "Artist",
-        "name": "Israel Houghton",
-        "id": "-NOoB4NGnRR3bhMVMY8y"
-    },
-    {
-        "id": "-NOoB4NGqGCQ-Fs0l0-4",
-        "type": "Artist",
-        "name": "Chris Tomlin"
-    },
-    {
-        "name": "Desperation Band",
-        "type": "Band",
-        "id": "-NOoB4NGqlS-KJpG7eVJ"
-    },
-    {
-        "id": "-NOoB4NGrt3UUxz3DKDh",
-        "name": "Hillsong United",
-        "type": "Band"
-    },
-    {
-        "name": "Kari Jobe",
-        "id": "-NOoB4NGsnlcv7G0an6-",
-        "type": "Artist"
-    },
-    {
-        "type": "Artist",
-        "id": "-NOoB4NGtBj9ZVl50gqT",
-        "name": "Don Moen"
-    },
-    {
-        "type": "Band",
-        "name": "Gloryfall",
-        "id": "-NOoB4NGycsbEuW2WLEz"
-    },
-    {
-        "id": "-NOoB4NGyhXSoZe4hr66",
-        "type": "Band",
-        "name": "Doulos Worship"
-    },
-    {
-        "type": "Artist",
-        "id": "-NOoB4NH02jZ6HHd5cAD",
-        "name": "Rommel Guevarra"
-    },
-    {
-        "id": "-NOoB4NH0NvJ8z5Xc461",
-        "type": "Band",
-        "name": "Victory Worship"
-    },
-    {
-        "name": "Tasha Cobbs",
-        "type": "Artist",
-        "id": "-NOoB4NH0xLvXMOZStuj"
-    },
-    {
-        "name": "The Belonging Co",
-        "id": "-NOoB4NH0zsiNBpRaZFt",
-        "type": "Band"
-    },
-    {
-        "name": "Lenny Le Blanc",
-        "type": "Artist",
-        "id": "-NOoB4NH1JGDSqng9C5P"
-    },
-    {
-        "id": "-NOoB4NH8hw7moFk6o7S",
-        "name": "Toby Mac",
-        "type": "Artist"
-    },
-    {
-        "name": "Sons And Daughters",
-        "id": "-NOoB4NH9USAuVyv--cu",
-        "type": "Band"
-    },
-    {
-        "name": "Planetshakers",
-        "id": "-NOoB4NHAMrbefGmhEdP",
-        "type": "Band"
-    },
-    {
-        "id": "-NOoB4NHBc69o6lrQ17N",
-        "name": "Matt Redman",
-        "type": "Artist"
-    },
-    {
         "type": "Band",
         "name": "Malayang Pilipino Music",
-        "id": "-NOoB4NHCs6_JdFIVhpo"
-    },
-    {
-        "type": "Band",
-        "name": "Leeland",
-        "id": "-NOoB4NHCx4eSEyGuBgx"
-    },
-    {
-        "name": "Rend Collective",
-        "type": "Band",
-        "id": "-NOoB4NHDS6L_wfmiqJz"
-    },
-    {
-        "id": "-NOoB4NHEa-I8uSZYUXB",
-        "name": "Red Rocks Worship",
-        "type": "Band"
-    },
-    {
-        "name": "Papuri Singers",
-        "type": "Band",
-        "id": "-NOoB4NHFWxkPrnz0PgK"
-    },
-    {
-        "name": "Titus Band",
-        "id": "-NOoB4NHI4EKhZtxBxQk",
-        "type": "Band"
+        "id": "-NOoaH5n1g9XolTrw_Bq"
     },
     {
         "type": "Artist",
-        "name": "Paul Baloche",
-        "id": "-NOoB4NHKk56evnT-t8Q"
-    },
-    {
-        "type": "Artist",
-        "id": "-NOoB4NHNLqtwKoDGP0m",
-        "name": "Sinach"
-    },
-    {
-        "id": "-NOoB4NHNcAPAXRmKCmY",
-        "type": "Artist",
-        "name": "Lauren Daigle"
-    },
-    {
-        "type": "Artist",
-        "id": "-NOoB4NHPcMahSyuEmvr",
+        "id": "-NOoaH5n2fo9qr0e3nve",
         "name": "Mack Brock"
     },
     {
         "type": "Band",
-        "id": "-NOoB4NHPhwW9YPJKpjL",
-        "name": "Vertical Worship"
+        "name": "Passion Generation Worship Band",
+        "id": "-NOoaH5n3LfGN2FEONr7"
     },
     {
-        "type": "Artist",
-        "id": "-NOoB4NHRYR52Ypgez2R",
-        "name": "Paul Wilbur"
-    },
-    {
-        "name": "Newsboys",
+        "name": "Jesus Culture",
         "type": "Band",
-        "id": "-NOoB4NHTi38pKjFyjtM"
+        "id": "-NOoaH5n3iKduCBs3aHx"
     },
     {
-        "id": "-NOoB4NHX0blwWjsK5wm",
-        "name": "Lincoln Brewster",
+        "type": "Band",
+        "id": "-NOoaH5n4YLU0hJaB_-_",
+        "name": "Sons And Daughters"
+    },
+    {
+        "id": "-NOoaH5n4sbXPJhgR1zO",
+        "name": "Don Moen",
         "type": "Artist"
     },
     {
-        "name": "Unspoken",
+        "name": "Rend Collective",
+        "id": "-NOoaH5n5VuBB-0xq2xg",
+        "type": "Band"
+    },
+    {
         "type": "Band",
-        "id": "-NOoB4NHaXeevyGPpFQw"
+        "id": "-NOoaH5n5yDb1ZzSERMp",
+        "name": "Sidewalk Prophets"
+    },
+    {
+        "type": "Band",
+        "name": "Desperation Band",
+        "id": "-NOoaH5n6jdUBCmHUGDQ"
+    },
+    {
+        "name": "The Juans",
+        "type": "Band",
+        "id": "-NOoaH5n8fDJaAMv-fA6"
+    },
+    {
+        "name": "For King And Country",
+        "id": "-NOoaH5n8jlKMShzwwnk",
+        "type": "Band"
+    },
+    {
+        "name": "Leeland",
+        "type": "Band",
+        "id": "-NOoaH5n9LvkQ9eQz6nP"
+    },
+    {
+        "name": "Tasha Cobbs",
+        "type": "Artist",
+        "id": "-NOoaH5nBCgmf6rgNnns"
+    },
+    {
+        "type": "Band",
+        "id": "-NOoaH5nBZbuIc_AA_Bc",
+        "name": "City Harvest Church"
+    },
+    {
+        "type": "Band",
+        "id": "-NOoaH5nCokspjDI5FjE",
+        "name": "The Belonging Co"
+    },
+    {
+        "id": "-NOoaH5nD9P6K4hIl3IK",
+        "name": "CeCe Winans",
+        "type": "Artist"
+    },
+    {
+        "id": "-NOoaH5nEya7ujvBe3tD",
+        "type": "Band",
+        "name": "Red Rocks Worship"
+    },
+    {
+        "type": "Band",
+        "name": "Gloryfall",
+        "id": "-NOoaH5nG6xahtabpPh4"
+    },
+    {
+        "type": "Band",
+        "name": "Newsboys",
+        "id": "-NOoaH5nHT2dy6_Gvyhh"
+    },
+    {
+        "name": "People And Songs",
+        "id": "-NOoaH5nJ9X_ymP7N9OH",
+        "type": "Band"
+    },
+    {
+        "id": "-NOoaH5nJTMqojN1NGG2",
+        "type": "Artist",
+        "name": "David Crowder"
+    },
+    {
+        "id": "-NOoaH5nJq6wfCpYDV8f",
+        "name": "Hymns And Classics",
+        "type": "Band"
+    },
+    {
+        "id": "-NOoaH5nMP2UdKhzK1kb",
+        "name": "Paul Wilbur",
+        "type": "Artist"
+    },
+    {
+        "id": "-NOoaH5nMid1ryv08n1T",
+        "name": "Laura Story",
+        "type": "Artist"
+    },
+    {
+        "name": "Papuri Singers",
+        "id": "-NOoaH5nN5DzQ12oaW2c",
+        "type": "Band"
+    },
+    {
+        "name": "Elevation Worship",
+        "type": "Band",
+        "id": "-NOoaH5nPNkCD9LetNZ_"
+    },
+    {
+        "name": "Gary Valenciano",
+        "type": "Artist",
+        "id": "-NOoaH5nQTqFmkKbnyLx"
     },
     {
         "type": "Artist",
-        "id": "-NOoB4NHb9hFpuTOq4Yw",
-        "name": "Phil Wickham"
+        "id": "-NOoaH5nR0H6JoLiVW09",
+        "name": "Paul Baloche"
+    },
+    {
+        "id": "-NOoaH5nRjwGrjlbPaOF",
+        "name": "Chris Tomlin",
+        "type": "Artist"
+    },
+    {
+        "type": "Band",
+        "name": "Citipointe Live",
+        "id": "-NOoaH5nTA4JmMDIsXsV"
+    },
+    {
+        "name": "Leon Patillo",
+        "id": "-NOoaH5nTzjnivfRIwFp",
+        "type": "Artist"
+    },
+    {
+        "type": "Band",
+        "id": "-NOoaH5naDloArZq6DHv",
+        "name": "Planetshakers"
+    },
+    {
+        "name": "Parachute Band",
+        "type": "Band",
+        "id": "-NOoaH5naUACj1kkWuM9"
+    },
+    {
+        "type": "Artist",
+        "id": "-NOoaH5nc13PFQHl3sFm",
+        "name": "Darlene Zschech"
+    },
+    {
+        "id": "-NOoaH5ncR0fwFMVzvPb",
+        "name": "Kari Jobe",
+        "type": "Artist"
+    },
+    {
+        "name": "Gateway Worship",
+        "id": "-NOoaH5nd-i0Z152W1L-",
+        "type": "Band"
+    },
+    {
+        "name": "Third Day",
+        "type": "Band",
+        "id": "-NOoaH5ndhJSN3pBl0IL"
+    },
+    {
+        "name": "Faith Music Manila",
+        "id": "-NOoaH5ne2sznFO1-2eo",
+        "type": "Band"
+    },
+    {
+        "type": "Band",
+        "name": "7eventh Time Down",
+        "id": "-NOoaH5neJGuQLItIHDC"
+    },
+    {
+        "type": "Band",
+        "name": "Doulos Worship",
+        "id": "-NOoaH5neoeCctt5OGWi"
+    },
+    {
+        "name": "Tauren Wells",
+        "type": "Artist",
+        "id": "-NOoaH5nf6c2R1H1oV_j"
+    },
+    {
+        "id": "-NOoaH5ng7SzOot8pEQy",
+        "name": "New Life Worship",
+        "type": "Band"
+    },
+    {
+        "id": "-NOoaH5ngPuftJO7AqTW",
+        "type": "Band",
+        "name": "Casting Crowns"
+    },
+    {
+        "name": "Lauren Daigle",
+        "id": "-NOoaH5nhE1Dko3hk4rd",
+        "type": "Artist"
+    },
+    {
+        "type": "Artist",
+        "id": "-NOoaH5nhKOhuc1llbGD",
+        "name": "Matt Redman"
+    },
+    {
+        "type": "Band",
+        "name": "MercyMe",
+        "id": "-NOoaH5nlj_rxSvDdxch"
+    },
+    {
+        "name": "Brian Littrell",
+        "id": "-NOoaH5nmPgYEM9KKhUc",
+        "type": "Artist"
+    },
+    {
+        "name": "Lincoln Brewster",
+        "id": "-NOoaH5nnqozAHXxpPDL",
+        "type": "Artist"
+    },
+    {
+        "id": "-NOoaH5noKQQ0bM0Jw3C",
+        "name": "Lenny Le Blanc",
+        "type": "Artist"
+    },
+    {
+        "name": "Lorena Matacsil",
+        "id": "-NOoaH5noNpRvNuFh6Oq",
+        "type": "Artist"
     },
     {
         "name": "Musikatha",
         "type": "Band",
-        "id": "-NOoB4NHd5aoztBlaKMn"
+        "id": "-NOoaH5nqmqGH_yPrDQP"
     },
     {
-        "name": "UPPERROOM",
-        "id": "-NOoB4NHgZq-sfC417X8",
-        "type": "Band"
+        "id": "-NOoaH5nrnCfgnfyyNlI",
+        "type": "Artist",
+        "name": "Rommel Guevarra"
     },
     {
+        "name": "Jonalyn Viray",
+        "id": "-NOoaH5nrrFPn9qX9kvm",
+        "type": "Artist"
+    },
+    {
+        "name": "Israel Houghton",
+        "type": "Artist",
+        "id": "-NOoaH5nsarb3CGGOgAV"
+    },
+    {
+        "id": "-NOoaH5nt2XYTdhadf0m",
         "type": "Band",
-        "id": "-NOoB4NHh9zkp5ZWFBMr",
-        "name": "MercyMe"
+        "name": "Hillsong United"
     },
     {
         "type": "Artist",
-        "id": "-NOoB4NHlAfnLv-6F8_z",
-        "name": "Tauren Wells"
+        "name": "Phil Wickham",
+        "id": "-NOoaH5nvEr5APlFpcgC"
     },
     {
+        "id": "-NOoaH5nvOkJjY0OuKgp",
+        "name": "Luis Baldomaro",
+        "type": "Artist"
+    },
+    {
+        "type": "Artist",
+        "name": "Cesar Daaca",
+        "id": "-NOoaH5nvo0SVG7gXrSR"
+    },
+    {
+        "id": "-NOoaH5nwtG1tx-mg8_5",
+        "type": "Artist",
+        "name": "Sinach"
+    },
+    {
+        "name": "Audrey Assad",
         "type": "Band",
-        "id": "-NOoB4NHlS3MSyDydHVY",
-        "name": "New Life Worship"
-    },
-    {
-        "id": "-NOoB4NHlsqOK7YlPJGi",
-        "name": "Third Day",
-        "type": "Band"
+        "id": "-NOoaH5nxtz-G8jRKtSS"
     },
     {
         "name": "Owl City",
         "type": "Band",
-        "id": "-NOoB4NHoTZA5SpJ7cCw"
+        "id": "-NOoaH5nyu--u2phsi4m"
+    },
+    {
+        "id": "-NOoaH5o6GDbGbulEsnS",
+        "type": "Band",
+        "name": "We The Kingdom"
+    },
+    {
+        "id": "-NOoaH5o6V0dY5msqpIL",
+        "type": "Band",
+        "name": "Titus Band"
     },
     {
         "type": "Band",
-        "id": "-NOoB4NHok-TcEQGm49f",
-        "name": "The Juans"
+        "name": "UPPERROOM",
+        "id": "-NOoaH5oBogOpqzvMbcO"
     },
     {
-        "type": "Band",
-        "name": "Parachute Band",
-        "id": "-NOoB4NHq4P2tFRfbAFV"
-    },
-    {
-        "name": "Sidewalk Prophets",
-        "id": "-NOoB4NHrcFcJ8WmmMfG",
+        "id": "-NOoaH5oRlRpnOjjXt9S",
+        "name": "Victory Worship",
         "type": "Band"
     },
     {
-        "id": "-NOoB4NHy34N-qndJG8h",
+        "id": "-NOoaH5oZ_ClzLNeCFAz",
+        "name": "Toby Mac",
+        "type": "Artist"
+    },
+    {
+        "type": "Band",
+        "id": "-NOoaH5obApbQiJYUxkG",
+        "name": "Vertical Worship"
+    },
+    {
+        "type": "Band",
+        "name": "Unspoken",
+        "id": "-NOoaH5ohYfpdip442u6"
+    },
+    {
         "name": "Zach Williams",
+        "id": "-NOoaH5omM3EtPq80x6M",
         "type": "Artist"
     }
 ]
@@ -393,7 +438,7 @@ export default function JSONtoFIREBASE() {
         const newObj = {};
         newObj.id = generatePushID();
         newObj.name = oldA.a_name;
-        newObj.type = "Band";
+        newObj.type = newAAA.find(oA=>oA.name === oldA.a_name) ? newAAA.find(oA=>oA.name === oldA.a_name).type : "Band";
 
         newArtists.push(newObj)
     }
@@ -403,8 +448,8 @@ export default function JSONtoFIREBASE() {
         const oldS = oldSongs[index];
         const newObj = {};
         newObj.id = generatePushID();
-        // newObj.artist = newArtists.find(oA=>oA.name === oldS.a_name);
-        newObj.artist = newAAA.find(oA=>oA.name === oldS.a_name);
+        newObj.artist = newArtists.find(oA=>oA.name === oldS.a_name);
+        // newObj.artist = newAAA.find(oA=>oA.name === oldS.a_name) ? newAAA.find(oA=>oA.name === oldS.a_name) : newArtists.find(oA=>oA.name === oldS.a_name);
         newObj.capo = 0;
         newObj.key = oldS.s_key;
         newObj.lyrics = (oldLyrics.find(ol=>ol.s_id === oldS.s_id).s_chordslyrics).replaceAll("\n","&#13;");
