@@ -4,6 +4,10 @@
         "a_name": "7eventh Time Down"
     },
     {
+        "a_id": "63",
+        "a_name": "Audrey Assad"
+    },
+    {
         "a_id": "4",
         "a_name": "Bethel Worship"
     },
@@ -14,6 +18,14 @@
     {
         "a_id": "1",
         "a_name": "Casting Crowns"
+    },
+    {
+        "a_id": "74",
+        "a_name": "CeCe Winans"
+    },
+    {
+        "a_id": "72",
+        "a_name": "Cesar Daaca"
     },
     {
         "a_id": "3",
@@ -112,8 +124,20 @@
         "a_name": "Lenny Le Blanc"
     },
     {
+        "a_id": "73",
+        "a_name": "Leon Patillo"
+    },
+    {
         "a_id": "20",
         "a_name": "Lincoln Brewster"
+    },
+    {
+        "a_id": "65",
+        "a_name": "Lorena Matacsil"
+    },
+    {
+        "a_id": "71",
+        "a_name": "Luis Baldomaro"
     },
     {
         "a_id": "56",
@@ -156,12 +180,20 @@
         "a_name": "Parachute Band"
     },
     {
+        "a_id": "75",
+        "a_name": "Passion Generation Worship Band"
+    },
+    {
         "a_id": "42",
         "a_name": "Paul Baloche"
     },
     {
         "a_id": "27",
         "a_name": "Paul Wilbur"
+    },
+    {
+        "a_id": "64",
+        "a_name": "People And Songs"
     },
     {
         "a_id": "28",
@@ -238,6 +270,10 @@
     {
         "a_id": "36",
         "a_name": "Victory Worship"
+    },
+    {
+        "a_id": "62",
+        "a_name": "We The Kingdom"
     },
     {
         "a_id": "51",

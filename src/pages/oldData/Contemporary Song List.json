@@ -28,6 +28,20 @@
         "a_name": "Planetshakers"
     },
     {
+        "s_id": "1084",
+        "s_key": "D",
+        "s_name": "Aawit, Sasayaw",
+        "a_id": "24",
+        "a_name": "Musikatha"
+    },
+    {
+        "s_id": "1083",
+        "s_key": "F",
+        "s_name": "Aawitan Ka Ng Aleluya",
+        "a_id": "65",
+        "a_name": "Lorena Matacsil"
+    },
+    {
         "s_id": "607",
         "s_key": "B",
         "s_name": "Abba Father",
@@ -56,18 +70,18 @@
         "a_name": "Planetshakers"
     },
     {
-        "s_id": "585",
-        "s_key": "C",
-        "s_name": "Adonai",
-        "a_id": "27",
-        "a_name": "Paul Wilbur"
-    },
-    {
         "s_id": "275",
         "s_key": "B",
         "s_name": "Adonai",
         "a_id": "2",
         "a_name": "Hillsong United"
+    },
+    {
+        "s_id": "585",
+        "s_key": "C",
+        "s_name": "Adonai",
+        "a_id": "27",
+        "a_name": "Paul Wilbur"
     },
     {
         "s_id": "841",
@@ -189,6 +203,13 @@
         "a_name": "Hillsong United"
     },
     {
+        "s_id": "280",
+        "s_key": "C",
+        "s_name": "All My Hope",
+        "a_id": "2",
+        "a_name": "Hillsong United"
+    },
+    {
         "s_id": "126",
         "s_key": "G#",
         "s_name": "All My Hope",
@@ -196,11 +217,11 @@
         "a_name": "David Crowder"
     },
     {
-        "s_id": "280",
-        "s_key": "C",
-        "s_name": "All My Hope",
-        "a_id": "2",
-        "a_name": "Hillsong United"
+        "s_id": "1100",
+        "s_key": "E",
+        "s_name": "All My Praise",
+        "a_id": "75",
+        "a_name": "Passion Generation Worship Band"
     },
     {
         "s_id": "613",
@@ -252,18 +273,18 @@
         "a_name": "Hillsong United"
     },
     {
-        "s_id": "173",
-        "s_key": "Db",
-        "s_name": "All Things New",
-        "a_id": "11",
-        "a_name": "Elevation Worship"
-    },
-    {
         "s_id": "963",
         "s_key": "G",
         "s_name": "All Things New",
         "a_id": "29",
         "a_name": "Planetshakers"
+    },
+    {
+        "s_id": "173",
+        "s_key": "Db",
+        "s_name": "All Things New",
+        "a_id": "11",
+        "a_name": "Elevation Worship"
     },
     {
         "s_id": "578",
@@ -327,6 +348,13 @@
         "s_name": "Amazing Love",
         "a_id": "2",
         "a_name": "Hillsong United"
+    },
+    {
+        "s_id": "1072",
+        "s_key": "D",
+        "s_name": "Amen",
+        "a_id": "64",
+        "a_name": "People And Songs"
     },
     {
         "s_id": "285",
@@ -413,18 +441,18 @@
         "a_name": "Elevation Worship"
     },
     {
-        "s_id": "759",
-        "s_key": "C#",
-        "s_name": "Awesome God",
-        "a_id": "32",
-        "a_name": "Sinach"
-    },
-    {
         "s_id": "288",
         "s_key": "A",
         "s_name": "Awesome God",
         "a_id": "2",
         "a_name": "Hillsong United"
+    },
+    {
+        "s_id": "759",
+        "s_key": "C#",
+        "s_name": "Awesome God",
+        "a_id": "32",
+        "a_name": "Sinach"
     },
     {
         "s_id": "871",
@@ -481,6 +509,13 @@
         "s_name": "Baby Boy",
         "a_id": "13",
         "a_name": "For King And Country"
+    },
+    {
+        "s_id": "1101",
+        "s_key": "A",
+        "s_name": "Baliw Sa Panginoon",
+        "a_id": "75",
+        "a_name": "Passion Generation Worship Band"
     },
     {
         "s_id": "542",
@@ -579,6 +614,13 @@
         "s_name": "Believe",
         "a_id": "29",
         "a_name": "Planetshakers"
+    },
+    {
+        "s_id": "1096",
+        "s_key": "G",
+        "s_name": "Believe For It",
+        "a_id": "74",
+        "a_name": "CeCe Winans"
     },
     {
         "s_id": "289",
@@ -784,6 +826,13 @@
         "a_name": "Red Rocks Worship"
     },
     {
+        "s_id": "1052",
+        "s_key": "Cm",
+        "s_name": "Cages",
+        "a_id": "62",
+        "a_name": "We The Kingdom"
+    },
+    {
         "s_id": "812",
         "s_key": "C",
         "s_name": "Call It Grace",
@@ -861,6 +910,13 @@
         "a_name": "Zach Williams"
     },
     {
+        "s_id": "1054",
+        "s_key": "G",
+        "s_name": "Child Of Love",
+        "a_id": "62",
+        "a_name": "We The Kingdom"
+    },
+    {
         "s_id": "72",
         "s_key": "B",
         "s_name": "Chosen Generation",
@@ -891,7 +947,7 @@
     {
         "s_id": "295",
         "s_key": "G",
-        "s_name": "Chuch On Fire",
+        "s_name": "Church On Fire",
         "a_id": "2",
         "a_name": "Hillsong United"
     },
@@ -908,6 +964,13 @@
         "s_name": "City On Our Knees",
         "a_id": "34",
         "a_name": "Toby Mac"
+    },
+    {
+        "s_id": "1073",
+        "s_key": "Eb",
+        "s_name": "Cleansed",
+        "a_id": "64",
+        "a_name": "People And Songs"
     },
     {
         "s_id": "297",
@@ -959,18 +1022,18 @@
         "a_name": "Doulos Worship"
     },
     {
-        "s_id": "853",
-        "s_key": "E",
-        "s_name": "Come Holy Spirit",
-        "a_id": "35",
-        "a_name": "Vertical Worship"
-    },
-    {
         "s_id": "100",
         "s_key": "G",
         "s_name": "Come Holy Spirit",
         "a_id": "7",
         "a_name": "City Harvest Church"
+    },
+    {
+        "s_id": "853",
+        "s_key": "E",
+        "s_name": "Come Holy Spirit",
+        "a_id": "35",
+        "a_name": "Vertical Worship"
     },
     {
         "s_id": "55",
@@ -1113,6 +1176,13 @@
         "a_name": "Matt Redman"
     },
     {
+        "s_id": "1055",
+        "s_key": "E",
+        "s_name": "Dancing On The Waves",
+        "a_id": "62",
+        "a_name": "We The Kingdom"
+    },
+    {
         "s_id": "36",
         "s_key": "C",
         "s_name": "Deep Cries Out",
@@ -1139,6 +1209,13 @@
         "s_name": "Desert Song",
         "a_id": "2",
         "a_name": "Hillsong United"
+    },
+    {
+        "s_id": "1086",
+        "s_key": "G",
+        "s_name": "Di Ako Magsasawang Purihin Ka",
+        "a_id": "72",
+        "a_name": "Cesar Daaca"
     },
     {
         "s_id": "513",
@@ -1183,6 +1260,13 @@
         "a_name": "Titus Band"
     },
     {
+        "s_id": "1085",
+        "s_key": "G",
+        "s_name": "Diyos Ng Salinlahi",
+        "a_id": "71",
+        "a_name": "Luis Baldomaro"
+    },
+    {
         "s_id": "176",
         "s_key": "Bb",
         "s_name": "Do It Again",
@@ -1202,6 +1286,13 @@
         "s_name": "Dominion",
         "a_id": "6",
         "a_name": "Citipointe Live"
+    },
+    {
+        "s_id": "1056",
+        "s_key": "G",
+        "s_name": "Don't Tread On Me",
+        "a_id": "62",
+        "a_name": "We The Kingdom"
     },
     {
         "s_id": "623",
@@ -1414,18 +1505,18 @@
         "a_name": "UPPERROOM"
     },
     {
-        "s_id": "181",
-        "s_key": "E",
-        "s_name": "Faithful",
-        "a_id": "11",
-        "a_name": "Elevation Worship"
-    },
-    {
         "s_id": "876",
         "s_key": "C",
         "s_name": "Faithful",
         "a_id": "36",
         "a_name": "Victory Worship"
+    },
+    {
+        "s_id": "181",
+        "s_key": "E",
+        "s_name": "Faithful",
+        "a_id": "11",
+        "a_name": "Elevation Worship"
     },
     {
         "s_id": "465",
@@ -1435,18 +1526,18 @@
         "a_name": "Laura Story"
     },
     {
-        "s_id": "780",
-        "s_key": "C",
-        "s_name": "Fall",
-        "a_id": "33",
-        "a_name": "The Belonging Co"
-    },
-    {
         "s_id": "308",
         "s_key": "E",
         "s_name": "Fall",
         "a_id": "2",
         "a_name": "Hillsong United"
+    },
+    {
+        "s_id": "780",
+        "s_key": "C",
+        "s_name": "Fall",
+        "a_id": "33",
+        "a_name": "The Belonging Co"
     },
     {
         "s_id": "779",
@@ -1478,7 +1569,7 @@
     },
     {
         "s_id": "898",
-        "s_key": "E",
+        "s_key": "A",
         "s_name": "Father's Love",
         "a_id": "52",
         "a_name": "Gary Valenciano"
@@ -1652,11 +1743,11 @@
         "a_name": "Victory Worship"
     },
     {
-        "s_id": "314",
-        "s_key": "D",
+        "s_id": "451",
+        "s_key": "G#",
         "s_name": "Forever",
-        "a_id": "2",
-        "a_name": "Hillsong United"
+        "a_id": "17",
+        "a_name": "Kari Jobe"
     },
     {
         "s_id": "71",
@@ -1666,11 +1757,11 @@
         "a_name": "Chris Tomlin"
     },
     {
-        "s_id": "451",
-        "s_key": "G#",
+        "s_id": "314",
+        "s_key": "D",
         "s_name": "Forever",
-        "a_id": "17",
-        "a_name": "Kari Jobe"
+        "a_id": "2",
+        "a_name": "Hillsong United"
     },
     {
         "s_id": "878",
@@ -1687,18 +1778,18 @@
         "a_name": "Elevation Worship"
     },
     {
-        "s_id": "303",
-        "s_key": "C",
-        "s_name": "Forever Reign",
-        "a_id": "2",
-        "a_name": "Hillsong United"
-    },
-    {
         "s_id": "892",
         "s_key": "E",
         "s_name": "Forever Reign",
         "a_id": "36",
         "a_name": "Victory Worship"
+    },
+    {
+        "s_id": "303",
+        "s_key": "C",
+        "s_name": "Forever Reign",
+        "a_id": "2",
+        "a_name": "Hillsong United"
     },
     {
         "s_id": "129",
@@ -1727,6 +1818,13 @@
         "s_name": "Free To Dance",
         "a_id": "2",
         "a_name": "Hillsong United"
+    },
+    {
+        "s_id": "1102",
+        "s_key": "D",
+        "s_name": "Freedom",
+        "a_id": "75",
+        "a_name": "Passion Generation Worship Band"
     },
     {
         "s_id": "37",
@@ -1883,6 +1981,13 @@
         "a_name": "Casting Crowns"
     },
     {
+        "s_id": "1103",
+        "s_key": "G",
+        "s_name": "Glory Revealed",
+        "a_id": "75",
+        "a_name": "Passion Generation Worship Band"
+    },
+    {
         "s_id": "560",
         "s_key": "B",
         "s_name": "God Be Praised",
@@ -1902,6 +2007,13 @@
         "s_name": "God Is Able",
         "a_id": "2",
         "a_name": "Hillsong United"
+    },
+    {
+        "s_id": "1104",
+        "s_key": "C",
+        "s_name": "God Is Good All The Time",
+        "a_id": "75",
+        "a_name": "Passion Generation Worship Band"
     },
     {
         "s_id": "153",
@@ -2002,9 +2114,23 @@
         "a_name": "Chris Tomlin"
     },
     {
+        "s_id": "1057",
+        "s_key": "Bb",
+        "s_name": "God So Loved",
+        "a_id": "62",
+        "a_name": "We The Kingdom"
+    },
+    {
         "s_id": "154",
         "s_key": "G",
         "s_name": "God Will Make A Way",
+        "a_id": "10",
+        "a_name": "Don Moen"
+    },
+    {
+        "s_id": "155",
+        "s_key": "C",
+        "s_name": "God With Us",
         "a_id": "10",
         "a_name": "Don Moen"
     },
@@ -2014,13 +2140,6 @@
         "s_name": "God With us",
         "a_id": "54",
         "a_name": "Sons And Daughters"
-    },
-    {
-        "s_id": "155",
-        "s_key": "C",
-        "s_name": "God With Us",
-        "a_id": "10",
-        "a_name": "Don Moen"
     },
     {
         "s_id": "860",
@@ -2063,6 +2182,13 @@
         "s_name": "Good Good Father",
         "a_id": "3",
         "a_name": "Chris Tomlin"
+    },
+    {
+        "s_id": "1065",
+        "s_key": "E",
+        "s_name": "Good To Me",
+        "a_id": "63",
+        "a_name": "Audrey Assad"
     },
     {
         "s_id": "861",
@@ -2548,18 +2674,18 @@
         "a_name": "Chris Tomlin"
     },
     {
-        "s_id": "454",
-        "s_key": "E",
-        "s_name": "Holy Spirit",
-        "a_id": "17",
-        "a_name": "Kari Jobe"
-    },
-    {
         "s_id": "440",
         "s_key": "A",
         "s_name": "Holy Spirit",
         "a_id": "16",
         "a_name": "Jesus Culture"
+    },
+    {
+        "s_id": "454",
+        "s_key": "E",
+        "s_name": "Holy Spirit",
+        "a_id": "17",
+        "a_name": "Kari Jobe"
     },
     {
         "s_id": "336",
@@ -2576,11 +2702,11 @@
         "a_name": "UPPERROOM"
     },
     {
-        "s_id": "337",
-        "s_key": "F#",
-        "s_name": "Home",
-        "a_id": "2",
-        "a_name": "Hillsong United"
+        "s_id": "1058",
+        "s_key": "D",
+        "s_name": "Holy Water",
+        "a_id": "62",
+        "a_name": "We The Kingdom"
     },
     {
         "s_id": "644",
@@ -2588,6 +2714,13 @@
         "s_name": "Home",
         "a_id": "29",
         "a_name": "Planetshakers"
+    },
+    {
+        "s_id": "337",
+        "s_key": "F#",
+        "s_name": "Home",
+        "a_id": "2",
+        "a_name": "Hillsong United"
     },
     {
         "s_id": "900",
@@ -2658,6 +2791,13 @@
         "s_name": "How He Loves Us",
         "a_id": "9",
         "a_name": "David Crowder"
+    },
+    {
+        "s_id": "1066",
+        "s_key": "D",
+        "s_name": "Humble",
+        "a_id": "63",
+        "a_name": "Audrey Assad"
     },
     {
         "s_id": "784",
@@ -2863,6 +3003,13 @@
         "a_name": "Bethel Worship"
     },
     {
+        "s_id": "1067",
+        "s_key": "E",
+        "s_name": "I Shall Not Want",
+        "a_id": "63",
+        "a_name": "Audrey Assad"
+    },
+    {
         "s_id": "258",
         "s_key": "E",
         "s_name": "I Sing Blessing",
@@ -2940,6 +3087,13 @@
         "a_name": "Hillsong United"
     },
     {
+        "s_id": "1074",
+        "s_key": "F",
+        "s_name": "I Will See The Lord",
+        "a_id": "64",
+        "a_name": "People And Songs"
+    },
+    {
         "s_id": "162",
         "s_key": "C",
         "s_name": "I Will Sing",
@@ -2966,6 +3120,13 @@
         "s_name": "Ibuhos Mo",
         "a_id": "30",
         "a_name": "Rommel Guevarra"
+    },
+    {
+        "s_id": "1059",
+        "s_key": "A",
+        "s_name": "If All I Had Was Christ",
+        "a_id": "62",
+        "a_name": "We The Kingdom"
     },
     {
         "s_id": "864",
@@ -3010,6 +3171,13 @@
         "a_name": "Titus Band"
     },
     {
+        "s_id": "740",
+        "s_key": "G",
+        "s_name": "Ikaw Lamang",
+        "a_id": "30",
+        "a_name": "Rommel Guevarra"
+    },
+    {
         "s_id": "266",
         "s_key": "D",
         "s_name": "Ikaw Lamang",
@@ -3017,11 +3185,11 @@
         "a_name": "Gloryfall"
     },
     {
-        "s_id": "740",
+        "s_id": "1105",
         "s_key": "G",
         "s_name": "Ikaw Lamang",
-        "a_id": "30",
-        "a_name": "Rommel Guevarra"
+        "a_id": "75",
+        "a_name": "Passion Generation Worship Band"
     },
     {
         "s_id": "545",
@@ -3150,11 +3318,32 @@
         "a_name": "New Life Worship"
     },
     {
-        "s_id": "642",
-        "s_key": "D",
-        "s_name": "Jesus",
-        "a_id": "29",
-        "a_name": "Planetshakers"
+        "s_id": "1097",
+        "s_key": "G",
+        "s_name": "It Wasn't Easy",
+        "a_id": "74",
+        "a_name": "CeCe Winans"
+    },
+    {
+        "s_id": "1106",
+        "s_key": "G",
+        "s_name": "Itataas Kita",
+        "a_id": "75",
+        "a_name": "Passion Generation Worship Band"
+    },
+    {
+        "s_id": "1095",
+        "s_key": "G",
+        "s_name": "Itataas Kita",
+        "a_id": "71",
+        "a_name": "Luis Baldomaro"
+    },
+    {
+        "s_id": "1087",
+        "s_key": "A",
+        "s_name": "Itataas, Ihahayag",
+        "a_id": "21",
+        "a_name": "Malayang Pilipino Music"
     },
     {
         "s_id": "65",
@@ -3162,6 +3351,13 @@
         "s_name": "Jesus",
         "a_id": "3",
         "a_name": "Chris Tomlin"
+    },
+    {
+        "s_id": "642",
+        "s_key": "D",
+        "s_name": "Jesus",
+        "a_id": "29",
+        "a_name": "Planetshakers"
     },
     {
         "s_id": "433",
@@ -3234,6 +3430,13 @@
         "a_name": "Chris Tomlin"
     },
     {
+        "s_id": "1094",
+        "s_key": "Eb",
+        "s_name": "Jireh",
+        "a_id": "11",
+        "a_name": "Elevation Worship"
+    },
+    {
         "s_id": "643",
         "s_key": "C",
         "s_name": "Joy",
@@ -3283,6 +3486,13 @@
         "a_name": "Papuri Singers"
     },
     {
+        "s_id": "1088",
+        "s_key": "G",
+        "s_name": "Kalakip Ng Awitin",
+        "a_id": "24",
+        "a_name": "Musikatha"
+    },
+    {
         "s_id": "519",
         "s_key": "D",
         "s_name": "Kamangha-mangha",
@@ -3309,6 +3519,13 @@
         "s_name": "Katapatan Mo O Diyos",
         "a_id": "24",
         "a_name": "Musikatha"
+    },
+    {
+        "s_id": "1107",
+        "s_key": "G",
+        "s_name": "Kayamanan",
+        "a_id": "75",
+        "a_name": "Passion Generation Worship Band"
     },
     {
         "s_id": "741",
@@ -3416,11 +3633,25 @@
         "a_name": "Gary Valenciano"
     },
     {
+        "s_id": "1068",
+        "s_key": "C",
+        "s_name": "Lead Me On",
+        "a_id": "63",
+        "a_name": "Audrey Assad"
+    },
+    {
         "s_id": "350",
         "s_key": "D",
         "s_name": "Lead Me To The Cross",
         "a_id": "2",
         "a_name": "Hillsong United"
+    },
+    {
+        "s_id": "1069",
+        "s_key": "C",
+        "s_name": "Lead, Kindly Light",
+        "a_id": "63",
+        "a_name": "Audrey Assad"
     },
     {
         "s_id": "13",
@@ -3463,6 +3694,13 @@
         "s_name": "Let My Soul",
         "a_id": "14",
         "a_name": "Gateway Worship"
+    },
+    {
+        "s_id": "1075",
+        "s_key": "D",
+        "s_name": "Let Revival Come",
+        "a_id": "64",
+        "a_name": "People And Songs"
     },
     {
         "s_id": "352",
@@ -3508,7 +3746,7 @@
     },
     {
         "s_id": "904",
-        "s_key": "D",
+        "s_key": "A",
         "s_name": "Letting Go",
         "a_id": "52",
         "a_name": "Gary Valenciano"
@@ -3633,6 +3871,13 @@
         "a_name": "Newsboys"
     },
     {
+        "s_id": "1077",
+        "s_key": "C#",
+        "s_name": "Living In The Overflow",
+        "a_id": "64",
+        "a_name": "People And Songs"
+    },
+    {
         "s_id": "357",
         "s_key": "E",
         "s_name": "Lord Of Lords",
@@ -3729,6 +3974,13 @@
         "s_name": "Loyal",
         "a_id": "19",
         "a_name": "Lauren Daigle"
+    },
+    {
+        "s_id": "1089",
+        "s_key": "F",
+        "s_name": "Luwalhatiin Ka",
+        "a_id": "24",
+        "a_name": "Musikatha"
     },
     {
         "s_id": "659",
@@ -3841,6 +4093,13 @@
         "s_name": "Mercy",
         "a_id": "4",
         "a_name": "Bethel Worship"
+    },
+    {
+        "s_id": "1098",
+        "s_key": "F",
+        "s_name": "Mercy Said No",
+        "a_id": "74",
+        "a_name": "CeCe Winans"
     },
     {
         "s_id": "226",
@@ -4019,10 +4278,17 @@
     },
     {
         "s_id": "907",
-        "s_key": "Bb",
+        "s_key": "F",
         "s_name": "Natutulog Ba Ang Diyos",
         "a_id": "52",
         "a_name": "Gary Valenciano"
+    },
+    {
+        "s_id": "1099",
+        "s_key": "G",
+        "s_name": "Never Have To Be Alone",
+        "a_id": "74",
+        "a_name": "CeCe Winans"
     },
     {
         "s_id": "205",
@@ -4039,11 +4305,25 @@
         "a_name": "Planetshakers"
     },
     {
+        "s_id": "1078",
+        "s_key": "D",
+        "s_name": "New Name Written Down In Glory",
+        "a_id": "64",
+        "a_name": "People And Songs"
+    },
+    {
         "s_id": "366",
         "s_key": "Bb",
         "s_name": "New Wine",
         "a_id": "2",
         "a_name": "Hillsong United"
+    },
+    {
+        "s_id": "1060",
+        "s_key": "B",
+        "s_name": "No Doubt About It",
+        "a_id": "62",
+        "a_name": "We The Kingdom"
     },
     {
         "s_id": "45",
@@ -4095,18 +4375,18 @@
         "a_name": "Rend Collective"
     },
     {
-        "s_id": "719",
-        "s_key": "Ab",
-        "s_name": "Nobody Like You",
-        "a_id": "43",
-        "a_name": "Red Rocks Worship"
-    },
-    {
         "s_id": "683",
         "s_key": "Eb",
         "s_name": "Nobody Like You",
         "a_id": "29",
         "a_name": "Planetshakers"
+    },
+    {
+        "s_id": "719",
+        "s_key": "Ab",
+        "s_name": "Nobody Like You",
+        "a_id": "43",
+        "a_name": "Red Rocks Worship"
     },
     {
         "s_id": "56",
@@ -4396,18 +4676,18 @@
         "a_name": "Planetshakers"
     },
     {
-        "s_id": "722",
-        "s_key": "B",
-        "s_name": "Overflow",
-        "a_id": "43",
-        "a_name": "Red Rocks Worship"
-    },
-    {
         "s_id": "838",
         "s_key": "B",
         "s_name": "Overflow",
         "a_id": "36",
         "a_name": "Victory Worship"
+    },
+    {
+        "s_id": "722",
+        "s_key": "B",
+        "s_name": "Overflow",
+        "a_id": "43",
+        "a_name": "Red Rocks Worship"
     },
     {
         "s_id": "506",
@@ -4417,11 +4697,32 @@
         "a_name": "Lincoln Brewster"
     },
     {
+        "s_id": "1090",
+        "s_key": "G",
+        "s_name": "Pag-ibig Mo",
+        "a_id": "21",
+        "a_name": "Malayang Pilipino Music"
+    },
+    {
         "s_id": "835",
         "s_key": "F",
         "s_name": "Pagbabalik",
         "a_id": "36",
         "a_name": "Victory Worship"
+    },
+    {
+        "s_id": "1108",
+        "s_key": "D",
+        "s_name": "Pagbangon",
+        "a_id": "75",
+        "a_name": "Passion Generation Worship Band"
+    },
+    {
+        "s_id": "1091",
+        "s_key": "D",
+        "s_name": "Paggising Sa Umaga",
+        "a_id": "73",
+        "a_name": "Leon Patillo"
     },
     {
         "s_id": "744",
@@ -4438,6 +4739,13 @@
         "a_name": "Planetshakers"
     },
     {
+        "s_id": "1061",
+        "s_key": "B",
+        "s_name": "Peace",
+        "a_id": "62",
+        "a_name": "We The Kingdom"
+    },
+    {
         "s_id": "787",
         "s_key": "A",
         "s_name": "Peace Be Still",
@@ -4452,6 +4760,13 @@
         "a_name": "Hillsong United"
     },
     {
+        "s_id": "1093",
+        "s_key": "G",
+        "s_name": "Perfect King",
+        "a_id": "2",
+        "a_name": "Hillsong United"
+    },
+    {
         "s_id": "689",
         "s_key": "Ab",
         "s_name": "Perfect Love",
@@ -4459,18 +4774,18 @@
         "a_name": "Planetshakers"
     },
     {
-        "s_id": "775",
-        "s_key": "Ab",
-        "s_name": "Perfect Peace",
-        "a_id": "46",
-        "a_name": "Tauren Wells"
-    },
-    {
         "s_id": "470",
         "s_key": "C",
         "s_name": "Perfect Peace",
         "a_id": "18",
         "a_name": "Laura Story"
+    },
+    {
+        "s_id": "775",
+        "s_key": "Ab",
+        "s_name": "Perfect Peace",
+        "a_id": "46",
+        "a_name": "Tauren Wells"
     },
     {
         "s_id": "26",
@@ -4564,6 +4879,13 @@
         "a_name": "7eventh Time Down"
     },
     {
+        "s_id": "1079",
+        "s_key": "E",
+        "s_name": "Psalm 23 ( I Am Not Alone )",
+        "a_id": "64",
+        "a_name": "People And Songs"
+    },
+    {
         "s_id": "549",
         "s_key": "F",
         "s_name": "Pupurihin Ka Sa Awit",
@@ -4594,7 +4916,7 @@
     {
         "s_id": "946",
         "s_key": "D",
-        "s_name": "Quiet",
+        "s_name": "QUIET",
         "a_id": "11",
         "a_name": "Elevation Worship"
     },
@@ -4639,6 +4961,13 @@
         "s_name": "Red Letter",
         "a_id": "9",
         "a_name": "David Crowder"
+    },
+    {
+        "s_id": "1080",
+        "s_key": "B",
+        "s_name": "Redeemed By The Blood Of The Lamb",
+        "a_id": "64",
+        "a_name": "People And Songs"
     },
     {
         "s_id": "762",
@@ -4991,13 +5320,6 @@
         "a_name": "For King And Country"
     },
     {
-        "s_id": "909",
-        "s_key": "C",
-        "s_name": "Shout For Joy",
-        "a_id": "52",
-        "a_name": "Gary Valenciano"
-    },
-    {
         "s_id": "908",
         "s_key": "C",
         "s_name": "Shout For Joy",
@@ -5108,6 +5430,13 @@
         "s_name": "Spirit Of God",
         "a_id": "38",
         "a_name": "Gloryfall"
+    },
+    {
+        "s_id": "1070",
+        "s_key": "F",
+        "s_name": "Spirit Of The Living God",
+        "a_id": "63",
+        "a_name": "Audrey Assad"
     },
     {
         "s_id": "869",
@@ -5227,6 +5556,13 @@
         "s_name": "Take It All",
         "a_id": "2",
         "a_name": "Hillsong United"
+    },
+    {
+        "s_id": "1062",
+        "s_key": "Eb",
+        "s_name": "Take Me On A Ride",
+        "a_id": "62",
+        "a_name": "We The Kingdom"
     },
     {
         "s_id": "910",
@@ -5502,6 +5838,13 @@
         "a_name": "Hillsong United"
     },
     {
+        "s_id": "1092",
+        "s_key": "Eb",
+        "s_name": "This Is Our Time",
+        "a_id": "29",
+        "a_name": "Planetshakers"
+    },
+    {
         "s_id": "407",
         "s_key": "A",
         "s_name": "This Is The Air I Breathe",
@@ -5705,6 +6048,13 @@
         "a_name": "Planetshakers"
     },
     {
+        "s_id": "1109",
+        "s_key": "D",
+        "s_name": "Turuan Mo Ako",
+        "a_id": "75",
+        "a_name": "Passion Generation Worship Band"
+    },
+    {
         "s_id": "215",
         "s_key": "B",
         "s_name": "Unstoppable God",
@@ -5754,6 +6104,13 @@
         "a_name": "Sons And Daughters"
     },
     {
+        "s_id": "1063",
+        "s_key": "Eb",
+        "s_name": "Waking Up",
+        "a_id": "62",
+        "a_name": "We The Kingdom"
+    },
+    {
         "s_id": "554",
         "s_key": "E",
         "s_name": "Wala Kang Katulad",
@@ -5775,18 +6132,18 @@
         "a_name": "Gary Valenciano"
     },
     {
-        "s_id": "489",
-        "s_key": "E",
-        "s_name": "Way Maker",
-        "a_id": "39",
-        "a_name": "Leeland"
-    },
-    {
         "s_id": "764",
         "s_key": "B",
         "s_name": "Way Maker",
         "a_id": "32",
         "a_name": "Sinach"
+    },
+    {
+        "s_id": "489",
+        "s_key": "E",
+        "s_name": "Way Maker",
+        "a_id": "39",
+        "a_name": "Leeland"
     },
     {
         "s_id": "491",
@@ -5873,6 +6230,13 @@
         "a_name": "Laura Story"
     },
     {
+        "s_id": "1081",
+        "s_key": "E",
+        "s_name": "What Mercy Did For Me",
+        "a_id": "64",
+        "a_name": "People And Songs"
+    },
+    {
         "s_id": "950",
         "s_key": "F#",
         "s_name": "What Would You Do",
@@ -5885,6 +6249,13 @@
         "s_name": "What's Greater",
         "a_id": "5",
         "a_name": "7eventh Time Down"
+    },
+    {
+        "s_id": "1082",
+        "s_key": "G",
+        "s_name": "Whatever Comes",
+        "a_id": "64",
+        "a_name": "People And Songs"
     },
     {
         "s_id": "912",
@@ -6062,6 +6433,13 @@
         "a_name": "Don Moen"
     },
     {
+        "s_id": "213",
+        "s_key": "D",
+        "s_name": "Yahweh",
+        "a_id": "11",
+        "a_name": "Elevation Worship"
+    },
+    {
         "s_id": "567",
         "s_key": "B",
         "s_name": "Yahweh",
@@ -6076,13 +6454,6 @@
         "a_name": "Rend Collective"
     },
     {
-        "s_id": "213",
-        "s_key": "D",
-        "s_name": "Yahweh",
-        "a_id": "11",
-        "a_name": "Elevation Worship"
-    },
-    {
         "s_id": "824",
         "s_key": "C",
         "s_name": "You And You Alone",
@@ -6095,6 +6466,13 @@
         "s_name": "You Are Good",
         "a_id": "15",
         "a_name": "Israel Houghton"
+    },
+    {
+        "s_id": "1064",
+        "s_key": "F",
+        "s_name": "You Are Heaven",
+        "a_id": "62",
+        "a_name": "We The Kingdom"
     },
     {
         "s_id": "706",
@@ -6221,6 +6599,13 @@
         "s_name": "You Say",
         "a_id": "19",
         "a_name": "Lauren Daigle"
+    },
+    {
+        "s_id": "1071",
+        "s_key": "E",
+        "s_name": "You Speak",
+        "a_id": "63",
+        "a_name": "Audrey Assad"
     },
     {
         "s_id": "426",
