@@ -407,7 +407,7 @@ export default function JSONtoFIREBASE() {
         newObj.artist = newAAA.find(oA=>oA.name === oldS.a_name);
         newObj.capo = 0;
         newObj.key = oldS.s_key;
-        newObj.lyrics = oldLyrics.find(ol=>ol.s_id === oldS.s_id).s_chordslyrics;
+        newObj.lyrics = (oldLyrics.find(ol=>ol.s_id === oldS.s_id).s_chordslyrics).replaceAll("\n","&#13;");
         newObj.name = oldS.s_name;
         newObj.type = oldS.type;
 
@@ -483,58 +483,58 @@ export default function JSONtoFIREBASE() {
   }
 
 
-  const groupUp = (data,tbl) =>{
+//   const groupUp = (data,tbl) =>{
 
-    const batch = writeBatch(db);
-    const limit = 100;
-    const max = data.length;
-    let curr = 0;
-    let batchnum = 1;
+//     const batch = writeBatch(db);
+//     const limit = 100;
+//     const max = data.length;
+//     let curr = 0;
+//     let batchnum = 1;
 
-    // eslint-disable-next-line no-plusplus
-    for (let index = 0; index < max; index++) {
-        const el = data[index];
-        batch.set(doc(db,tbl, el.id),el);
-        // eslint-disable-next-line no-plusplus
-        curr++;
+//     // eslint-disable-next-line no-plusplus
+//     for (let index = 0; index < max; index++) {
+//         const el = data[index];
+//         batch.set(doc(db,tbl, el.id),el);
+//         // eslint-disable-next-line no-plusplus
+//         curr++;
 
-        if(max < limit){
-            if(curr === max){
-                curr = 0;
-                console.warn(`Added Batch${batchnum}`);
-                // eslint-disable-next-line no-loop-func
-                batch.commit().then(()=>{
-                        // eslint-disable-next-line no-plusplus
-                        batchnum ++;
-                    }
-                )
-            }
-        }else{
+//         if(max < limit){
+//             if(curr === max){
+//                 curr = 0;
+//                 console.warn(`Added Batch${batchnum}`);
+//                 // eslint-disable-next-line no-loop-func
+//                 batch.commit().then(()=>{
+//                         // eslint-disable-next-line no-plusplus
+//                         batchnum ++;
+//                     }
+//                 )
+//             }
+//         }else{
 
-            // eslint-disable-next-line no-lonely-if
-            if(limit === curr){
-                curr = 0;
-                // eslint-disable-next-line no-plusplus
-                console.warn(`Added Batch${batchnum}`);
-                // eslint-disable-next-line no-loop-func
-                batch.commit().then(()=>{
-                    // eslint-disable-next-line no-plusplus
-                    batchnum ++;
-                }
-            )
-            }
+//             // eslint-disable-next-line no-lonely-if
+//             if(limit === curr){
+//                 curr = 0;
+//                 // eslint-disable-next-line no-plusplus
+//                 console.warn(`Added Batch${batchnum}`);
+//                 // eslint-disable-next-line no-loop-func
+//                 batch.commit().then(()=>{
+//                     // eslint-disable-next-line no-plusplus
+//                     batchnum ++;
+//                 }
+//             )
+//             }
 
-        }
+//         }
 
-    }
+//     }
 
-    alert('Done!')
+//     alert('Done!')
 
-  }
+//   }
   
   return (
     <>
-        <Button onClick={()=>groupUp(artists, 'artists')}>Add Artists</Button>
+        <Button onClick={()=>batchIt(artists, 'artists')}>Add Artists</Button>
         <Button onClick={()=>batchIt(songs, 'songs')}>Add Songs</Button>
     </>
   );

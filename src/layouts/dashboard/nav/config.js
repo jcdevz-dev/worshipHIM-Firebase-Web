@@ -16,11 +16,11 @@ const navConfig = [
     path: '/dashboard/songs',
     icon: icon('ic_user'),
   },
-  // {
-  //   title: 'JSONtoFIREBASE',
-  //   path: '/dashboard/JSONtoFIREBASE',
-  //   icon: icon('ic_user'),
-  // },
+  {
+    title: 'JSONtoFIREBASE',
+    path: '/dashboard/JSONtoFIREBASE',
+    icon: icon('ic_user'),
+  },
 ];
 
 export default navConfig;
