@@ -192,12 +192,13 @@ export default function ArtistsPage() {
         }
       }
 
-      batch.commit()
-
-      fetch()
+      if(isSync){
+        batch.commit()
+        // fetch()
+      }
 
     }
-  }, [toSyncLater])
+  }, [toSyncLater, isSync])
 
 
   const add = async (data) => {
@@ -256,13 +257,13 @@ export default function ArtistsPage() {
         break;
 
       case "update":
-        update(selectedID,{name:newArtistName, type: newType})
+        update(selectedID,{id: selectedID,name:newArtistName, type: newType})
         setOpen(false)
         setOpenDialog(false)
         break;
     
       case "new":
-        add({name:newArtistName, type: newType})
+        add({id: generatePushID(), name:newArtistName, type: newType})
         setOpen(false)
         setOpenDialog(false)
         break;

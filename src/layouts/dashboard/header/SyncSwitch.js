@@ -58,7 +58,7 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
         <FormControlLabel
           sx={{color: '#000'}}
           control={<MaterialUISwitch sx={{ m: 1 }} onChange={()=>setisSync(!isSync)} />}
-          label={!isSync? "Batch Mode" : "Sync Updates"}
+          label={!isSync? "Offline Mode" : "Sync Updates"}
         />
       </FormGroup>
     );
