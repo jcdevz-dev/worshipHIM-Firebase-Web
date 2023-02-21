@@ -11,6 +11,7 @@ import ArtistsPage from './pages/ArtistsPage';
 import SongsPage from './pages/SongsPage';
 import LoginPage from './pages/LoginPage';
 import Page404 from './pages/Page404';
+import JSONtoFIREBASE from './pages/JSONtoFIREBASE';
 
 // ----------------------------------------------------------------------
 
@@ -42,6 +43,7 @@ export default function Router() {
         { path: 'artists/:filter/:type', element: <SongsPage /> },
         { path: 'songs', element: <SongsPage /> },
         { path: 'songs/:filter/:type', element: <SongsPage /> },
+        { path: 'JSONtoFIREBASE', element: <JSONtoFIREBASE /> },
       ],
     },
     {

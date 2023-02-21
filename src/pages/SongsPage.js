@@ -27,7 +27,7 @@ import {
 } from '@mui/material';
 
 // firebase
-import { collection, doc, addDoc, getDocs, deleteDoc, setDoc, where, query, writeBatch } from "firebase/firestore";
+import { collection, doc, addDoc, getDocs, deleteDoc, setDoc, where, query, writeBatch, getDocsFromCache  } from "firebase/firestore";
 import { db } from '../firebase/firebase';
 
 import { generatePushID } from '../utils/generateFirebaseID';
@@ -129,18 +129,36 @@ export default function SongsPage() {
   const [syncingOnline, setsyncingOnline] = useState(false)
   const [toSyncLater, settoSyncLater] = useState([])
 
+  
+
+  useEffect(() => {
+    if(type !== null)
+      fetch()
+  }, [type,filter])
+
+
   useEffect(() => {
     async function getA(){
-      await getDocs(collection(db, "artists")).then((querySnapshot)=>{              
-          const newData = querySnapshot.docs
-              .map((doc) => ({...doc.data(), id:doc.id }));
-              setsessionArtists(newData);                
-      })
+      console.log("GETTING ARTISTS...");
+
+      const docRef = collection(db, "artists");
+      try {
+
+          await getDocsFromCache(docRef).then((querySnapshot)=>{              
+            const newData = querySnapshot.docs
+                .map((doc) => ({...doc.data(), id:doc.id }));
+
+                console.log('cached Artists: ', newData);
+                setsessionArtists(newData);                
+            })
+
+      } catch (e) {
+        console.log("Error getting cached document:", e);
+      }
     }
       getA()
   }, [])
   
-
 
   const fetch = async () => {
     let q = collection(db, "songs")
@@ -171,12 +189,6 @@ export default function SongsPage() {
         })
   }
   
-
-
-  useEffect(() => {
-    fetch()
-  }, [type, filter])
-
  
   useEffect(() => {
     if(allSongs.length > 0){
@@ -233,12 +245,13 @@ export default function SongsPage() {
         }
       }
 
-      batch.commit()
-
-      fetch()
+      if(isSync){
+        batch.commit()
+        // fetch()
+      }
 
     }
-  }, [toSyncLater])
+  }, [toSyncLater, isSync])
 
 
   const add = async (data) => {

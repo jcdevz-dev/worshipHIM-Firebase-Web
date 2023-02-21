@@ -45,7 +45,6 @@ enableIndexedDbPersistence(db)
 export const logIn = (data, navigate) => signInWithEmailAndPassword(auth, data.email, data.password)
 .then((userCredential) => {
     // Signed in 
-    const user = userCredential.user;
     navigate('/dashboard', { replace: true });
 
   }).catch((error) => {
