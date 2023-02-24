@@ -14,7 +14,8 @@ import Scrollbar from '../../../components/scrollbar';
 import NavSection from '../../../components/nav-section';
 //
 import navConfig from './config';
-
+import UpdateArtistsCDN from '../header/UpdateArtistsCDN';
+import UpdateSongsCDN from '../header/UpdateSongsCDN';
 // ----------------------------------------------------------------------
 
 const NAV_WIDTH = 280;
@@ -79,6 +80,11 @@ export default function Nav({ openNav, onCloseNav }) {
       </Box>
 
       <NavSection data={navConfig} />
+
+      <Stack sx={{ mb: 5, mx: 2.5 , mt: 10}} spacing={2}>
+        <UpdateArtistsCDN/>
+        <UpdateSongsCDN/>
+      </Stack>
     </Scrollbar>
   );
 
